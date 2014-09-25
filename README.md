@@ -160,3 +160,7 @@ Client is a program, that will use HelloBot with modules. Let's show example wit
         }
     }
 ```
+
+###Supported system commands
+- {commandPrefix}help - show list of system commands
+- {commandPrefix}modules - show custom module list
