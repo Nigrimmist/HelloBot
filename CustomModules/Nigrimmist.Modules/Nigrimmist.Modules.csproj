@@ -65,7 +65,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\HelloBotCommunication\HelloBotCommunication.csproj">
       <Project>{53eb844b-b3a7-4397-9db3-84f5d9f30840}</Project>
-      <Name>BotCommunication</Name>
+      <Name>HelloBotCommunication</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

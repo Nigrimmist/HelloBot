@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkypeBotAdapterConsole", "SkypeBotAdapterConsole\SkypeBotAdapterConsole.csproj", "{E40CA888-2082-443B-954D-3FE5E3118C85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotCommunication", "HelloBotCommunication\HelloBotCommunication.csproj", "{53EB844B-B3A7-4397-9DB3-84F5D9F30840}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloBotCommunication", "HelloBotCommunication\HelloBotCommunication.csproj", "{53EB844B-B3A7-4397-9DB3-84F5D9F30840}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nigrimmist.Modules", "CustomModules\Nigrimmist.Modules\Nigrimmist.Modules.csproj", "{27DADDF0-F3CB-4E65-9C8C-8EB3C3E4EDAD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "TestConsoleApplication\Test.csproj", "{1EF49C78-B55A-45A5-BFC7-F4ACA5339FED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloBotCore", "HelloBotCore\HelloBotCore.csproj", "{F9500B18-085E-4A3D-B215-75EC409E05DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CusomModules", "CusomModules", "{C054E547-999A-4B50-AB90-CA42165D817B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VariousHandlersLib", "CustomModules\AlexeiShmanaiModules\VariousHandlersLib.csproj", "{111CF492-6831-47CB-8297-B22C9A752CB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,8 +41,16 @@ Global
 		{F9500B18-085E-4A3D-B215-75EC409E05DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9500B18-085E-4A3D-B215-75EC409E05DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9500B18-085E-4A3D-B215-75EC409E05DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{111CF492-6831-47CB-8297-B22C9A752CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{111CF492-6831-47CB-8297-B22C9A752CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{111CF492-6831-47CB-8297-B22C9A752CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{111CF492-6831-47CB-8297-B22C9A752CB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{27DADDF0-F3CB-4E65-9C8C-8EB3C3E4EDAD} = {C054E547-999A-4B50-AB90-CA42165D817B}
+		{111CF492-6831-47CB-8297-B22C9A752CB5} = {C054E547-999A-4B50-AB90-CA42165D817B}
 	EndGlobalSection
 EndGlobal
