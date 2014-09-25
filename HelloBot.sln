@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CusomModules", "CusomModule
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VariousHandlersLib", "CustomModules\Alex\VariousHandlersLib.csproj", "{111CF492-6831-47CB-8297-B22C9A752CB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yushko", "CustomModules\Yushko\Yushko\Yushko.csproj", "{4B061C6F-C37E-457D-829A-0CD545B36923}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yushko", "CustomModules\Yushko\Yushko.csproj", "{4B061C6F-C37E-457D-829A-0CD545B36923}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
