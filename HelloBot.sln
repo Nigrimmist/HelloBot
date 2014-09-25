@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CusomModules", "CusomModule
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VariousHandlersLib", "CustomModules\Alex\VariousHandlersLib.csproj", "{111CF492-6831-47CB-8297-B22C9A752CB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yushko", "CustomModules\Yushko\Yushko.csproj", "{4B061C6F-C37E-457D-829A-0CD545B36923}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{111CF492-6831-47CB-8297-B22C9A752CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{111CF492-6831-47CB-8297-B22C9A752CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{111CF492-6831-47CB-8297-B22C9A752CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B061C6F-C37E-457D-829A-0CD545B36923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B061C6F-C37E-457D-829A-0CD545B36923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B061C6F-C37E-457D-829A-0CD545B36923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B061C6F-C37E-457D-829A-0CD545B36923}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,5 +58,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{27DADDF0-F3CB-4E65-9C8C-8EB3C3E4EDAD} = {C054E547-999A-4B50-AB90-CA42165D817B}
 		{111CF492-6831-47CB-8297-B22C9A752CB5} = {C054E547-999A-4B50-AB90-CA42165D817B}
+		{4B061C6F-C37E-457D-829A-0CD545B36923} = {C054E547-999A-4B50-AB90-CA42165D817B}
 	EndGlobalSection
 EndGlobal
