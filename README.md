@@ -3,6 +3,8 @@ HelloBot
 
 .NET/C# Personal/group program assistant with any kind of client integration (Skype for example).
 
+!["HelloBot sample"](http://c2n.me/iYkMB2.png "HelloBot work sample")
+
 #Description
 
 HelloBot is a small code-behind project that contains C# action modules integrated with any kind of client (Skype). One module = one action that will be called by command with output result in text format. Sound simple, right? You can write your own client using HelloBot core and our documentation behind.
@@ -82,11 +84,11 @@ And another one class for register your calculator handler :
 
 After that you can simply put your dll to bin folder of client application and it should work.
 
-- **Adding client functionality**
+####Adding client functionality
 
 Client is a program, that will use HelloBot with modules. Let's show example with skype client. 
 
-####Sample of Skype client integration (console application)
+- **Sample of Skype client integration (console application)**
 ```C#
     class Program
     {
