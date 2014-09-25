@@ -61,7 +61,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomModules\AlexeiShmanaiModules\VariousHandlersLib.csproj">
+    <ProjectReference Include="..\CustomModules\Alex\VariousHandlersLib.csproj">
       <Project>{111cf492-6831-47cb-8297-b22c9a752cb5}</Project>
       <Name>VariousHandlersLib</Name>
     </ProjectReference>
