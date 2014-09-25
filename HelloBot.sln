@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloBotCore", "HelloBotCor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CusomModules", "CusomModules", "{C054E547-999A-4B50-AB90-CA42165D817B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VariousHandlersLib", "CustomModules\AlexeiShmanaiModules\VariousHandlersLib.csproj", "{111CF492-6831-47CB-8297-B22C9A752CB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VariousHandlersLib", "CustomModules\Alex\VariousHandlersLib.csproj", "{111CF492-6831-47CB-8297-B22C9A752CB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
