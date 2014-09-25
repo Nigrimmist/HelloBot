@@ -14,7 +14,7 @@ namespace SkypeBotAdapterConsole
 {
     class Program
     {
-        static Skype skype = new Skype();
+        private static Skype skype = new Skype();
         private static HelloBot bot;
 
         static void Main(string[] args)
@@ -51,8 +51,6 @@ namespace SkypeBotAdapterConsole
             Console.WriteLine(ex.ToString());
         }
 
-       
-
         private static void OnMessageReceived(ChatMessage pMessage, TChatMessageStatus status)
         {
             Console.WriteLine(status + pMessage.Body);
@@ -73,8 +71,6 @@ namespace SkypeBotAdapterConsole
                     toChat.SendMessage(message);
                 }
         }
-
-        
     }
 
     

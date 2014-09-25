@@ -137,7 +137,7 @@ namespace BotCore
 
         private string GetUserDefinedCommands()
         {
-            return String.Join(Environment.NewLine, handlers.Select(x => String.Format("!{0} - {1}", string.Join("/",x.CallCommandList), x.CommandDescription)).ToList());
+            return String.Join(Environment.NewLine, handlers.Select(x => String.Format("{0} - {1}", string.Join(" / ", x.CallCommandList.Select(y => botCommandPrefix + y)), x.CommandDescription)).ToList());
         }
     }
 
