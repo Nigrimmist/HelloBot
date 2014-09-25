@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nbrb.by/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nbrb.by/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nbrb.by/">
+      <s:element name="CurrenciesRefDaily">
+        <s:complexType />
+      </s:element>
+      <s:element name="CurrenciesRefDailyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurrenciesRefDailyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrenciesRefMonthly">
+        <s:complexType />
+      </s:element>
+      <s:element name="CurrenciesRefMonthlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurrenciesRefMonthlyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Periodicity" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartDateResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LastDailyExRatesDate">
+        <s:complexType />
+      </s:element>
+      <s:element name="LastDailyExRatesDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LastDailyExRatesDateResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LastMonthlyExRatesDate">
+        <s:complexType />
+      </s:element>
+      <s:element name="LastMonthlyExRatesDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LastMonthlyExRatesDateResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExRatesDaily">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="onDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExRatesDailyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExRatesDailyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExRatesMonthly">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="onDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExRatesMonthlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExRatesMonthlyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExRatesDyn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="curId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExRatesDynResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExRatesDynResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrenciesRef">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Periodicity" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrenciesRefResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurrenciesRefResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MetalsLastDate">
+        <s:complexType />
+      </s:element>
+      <s:element name="MetalsLastDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MetalsLastDateResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MetalsRef">
+        <s:complexType />
+      </s:element>
+      <s:element name="MetalsRefResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MetalsRefResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MetalsPrices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MetalId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MetalsPricesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MetalsPricesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IngotsPrices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="onDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IngotsPricesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IngotsPricesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IngotsLastDate">
+        <s:complexType />
+      </s:element>
+      <s:element name="IngotsLastDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IngotsLastDateResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StockAddRates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="onDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StockAddRatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StockAddRatesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StockAddRatesLastDate">
+        <s:complexType />
+      </s:element>
+      <s:element name="StockAddRatesLastDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StockAddRatesLastDateResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefRateOnDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="onDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefRateOnDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RefRateOnDateResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefRateDyn">
+        <s:complexType />
+      </s:element>
+      <s:element name="RefRateDynResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RefRateDynResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CurrenciesRefDailySoapIn">
+    <wsdl:part name="parameters" element="tns:CurrenciesRefDaily" />
+  </wsdl:message>
+  <wsdl:message name="CurrenciesRefDailySoapOut">
+    <wsdl:part name="parameters" element="tns:CurrenciesRefDailyResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurrenciesRefMonthlySoapIn">
+    <wsdl:part name="parameters" element="tns:CurrenciesRefMonthly" />
+  </wsdl:message>
+  <wsdl:message name="CurrenciesRefMonthlySoapOut">
+    <wsdl:part name="parameters" element="tns:CurrenciesRefMonthlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartDateSoapIn">
+    <wsdl:part name="parameters" element="tns:StartDate" />
+  </wsdl:message>
+  <wsdl:message name="StartDateSoapOut">
+    <wsdl:part name="parameters" element="tns:StartDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="LastDailyExRatesDateSoapIn">
+    <wsdl:part name="parameters" element="tns:LastDailyExRatesDate" />
+  </wsdl:message>
+  <wsdl:message name="LastDailyExRatesDateSoapOut">
+    <wsdl:part name="parameters" element="tns:LastDailyExRatesDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="LastMonthlyExRatesDateSoapIn">
+    <wsdl:part name="parameters" element="tns:LastMonthlyExRatesDate" />
+  </wsdl:message>
+  <wsdl:message name="LastMonthlyExRatesDateSoapOut">
+    <wsdl:part name="parameters" element="tns:LastMonthlyExRatesDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExRatesDailySoapIn">
+    <wsdl:part name="parameters" element="tns:ExRatesDaily" />
+  </wsdl:message>
+  <wsdl:message name="ExRatesDailySoapOut">
+    <wsdl:part name="parameters" element="tns:ExRatesDailyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExRatesMonthlySoapIn">
+    <wsdl:part name="parameters" element="tns:ExRatesMonthly" />
+  </wsdl:message>
+  <wsdl:message name="ExRatesMonthlySoapOut">
+    <wsdl:part name="parameters" element="tns:ExRatesMonthlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExRatesDynSoapIn">
+    <wsdl:part name="parameters" element="tns:ExRatesDyn" />
+  </wsdl:message>
+  <wsdl:message name="ExRatesDynSoapOut">
+    <wsdl:part name="parameters" element="tns:ExRatesDynResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurrenciesRefSoapIn">
+    <wsdl:part name="parameters" element="tns:CurrenciesRef" />
+  </wsdl:message>
+  <wsdl:message name="CurrenciesRefSoapOut">
+    <wsdl:part name="parameters" element="tns:CurrenciesRefResponse" />
+  </wsdl:message>
+  <wsdl:message name="MetalsLastDateSoapIn">
+    <wsdl:part name="parameters" element="tns:MetalsLastDate" />
+  </wsdl:message>
+  <wsdl:message name="MetalsLastDateSoapOut">
+    <wsdl:part name="parameters" element="tns:MetalsLastDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="MetalsRefSoapIn">
+    <wsdl:part name="parameters" element="tns:MetalsRef" />
+  </wsdl:message>
+  <wsdl:message name="MetalsRefSoapOut">
+    <wsdl:part name="parameters" element="tns:MetalsRefResponse" />
+  </wsdl:message>
+  <wsdl:message name="MetalsPricesSoapIn">
+    <wsdl:part name="parameters" element="tns:MetalsPrices" />
+  </wsdl:message>
+  <wsdl:message name="MetalsPricesSoapOut">
+    <wsdl:part name="parameters" element="tns:MetalsPricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IngotsPricesSoapIn">
+    <wsdl:part name="parameters" element="tns:IngotsPrices" />
+  </wsdl:message>
+  <wsdl:message name="IngotsPricesSoapOut">
+    <wsdl:part name="parameters" element="tns:IngotsPricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IngotsLastDateSoapIn">
+    <wsdl:part name="parameters" element="tns:IngotsLastDate" />
+  </wsdl:message>
+  <wsdl:message name="IngotsLastDateSoapOut">
+    <wsdl:part name="parameters" element="tns:IngotsLastDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="StockAddRatesSoapIn">
+    <wsdl:part name="parameters" element="tns:StockAddRates" />
+  </wsdl:message>
+  <wsdl:message name="StockAddRatesSoapOut">
+    <wsdl:part name="parameters" element="tns:StockAddRatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="StockAddRatesLastDateSoapIn">
+    <wsdl:part name="parameters" element="tns:StockAddRatesLastDate" />
+  </wsdl:message>
+  <wsdl:message name="StockAddRatesLastDateSoapOut">
+    <wsdl:part name="parameters" element="tns:StockAddRatesLastDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="RefRateOnDateSoapIn">
+    <wsdl:part name="parameters" element="tns:RefRateOnDate" />
+  </wsdl:message>
+  <wsdl:message name="RefRateOnDateSoapOut">
+    <wsdl:part name="parameters" element="tns:RefRateOnDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="RefRateDynSoapIn">
+    <wsdl:part name="parameters" element="tns:RefRateDyn" />
+  </wsdl:message>
+  <wsdl:message name="RefRateDynSoapOut">
+    <wsdl:part name="parameters" element="tns:RefRateDynResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ExRatesSoap">
+    <wsdl:operation name="CurrenciesRefDaily">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Устаревший метод</wsdl:documentation>
+      <wsdl:input message="tns:CurrenciesRefDailySoapIn" />
+      <wsdl:output message="tns:CurrenciesRefDailySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurrenciesRefMonthly">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Устаревший метод</wsdl:documentation>
+      <wsdl:input message="tns:CurrenciesRefMonthlySoapIn" />
+      <wsdl:output message="tns:CurrenciesRefMonthlySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Начальная дата установления Национальным банком Республики Беларусь официального курса белорусского рубля по отношению к иностранным валютам</wsdl:documentation>
+      <wsdl:input message="tns:StartDateSoapIn" />
+      <wsdl:output message="tns:StartDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LastDailyExRatesDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Последняя дата установления Национальным банком Республики Беларусь официального курса белорусского рубля по отношению к иностранным валютам на ежедневной основе</wsdl:documentation>
+      <wsdl:input message="tns:LastDailyExRatesDateSoapIn" />
+      <wsdl:output message="tns:LastDailyExRatesDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LastMonthlyExRatesDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Последняя дата установления Национальным банком Республики Беларусь официального курса белорусского рубля по отношению к иностранным валютам на ежемесячной основе</wsdl:documentation>
+      <wsdl:input message="tns:LastMonthlyExRatesDateSoapIn" />
+      <wsdl:output message="tns:LastMonthlyExRatesDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExRatesDaily">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Официальный курс белорусского рубля по отношению к иностранным валютам, устанавливаемый Национальным банком Республики Беларусь ежедневно, а также до 17.02.1997 г.</wsdl:documentation>
+      <wsdl:input message="tns:ExRatesDailySoapIn" />
+      <wsdl:output message="tns:ExRatesDailySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExRatesMonthly">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Официальный курс белорусского рубля по отношению к иностранным валютам, устанавливаемый Национальным банком Республики Беларусь ежемесячно</wsdl:documentation>
+      <wsdl:input message="tns:ExRatesMonthlySoapIn" />
+      <wsdl:output message="tns:ExRatesMonthlySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExRatesDyn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Динамика официального курса белорусского рубля по отношению к заданной иностранной валюте, устанавливаемого Национальным банком Республики Беларусь (не более чем за 365 дней)</wsdl:documentation>
+      <wsdl:input message="tns:ExRatesDynSoapIn" />
+      <wsdl:output message="tns:ExRatesDynSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurrenciesRef">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Полный перечень иностранных валют, к которым официальный курс белорусского рубля устанавливается Национальным банком Республики Беларусь</wsdl:documentation>
+      <wsdl:input message="tns:CurrenciesRefSoapIn" />
+      <wsdl:output message="tns:CurrenciesRefSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MetalsLastDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Последняя дата установления Национальным банком Республики Беларусь цен на драгоценные металлы в виде банковских слитков</wsdl:documentation>
+      <wsdl:input message="tns:MetalsLastDateSoapIn" />
+      <wsdl:output message="tns:MetalsLastDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MetalsRef">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Перечень драгоценных металлов, на которые Национальным банком Республики Беларусь устанавливаются учетные цены</wsdl:documentation>
+      <wsdl:input message="tns:MetalsRefSoapIn" />
+      <wsdl:output message="tns:MetalsRefSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MetalsPrices">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Динамика учетных цен на драгоценные металлы в виде банковских слитков, устанавливаемые Национальным банком Республики Беларусь (не более, чем за 31 день)</wsdl:documentation>
+      <wsdl:input message="tns:MetalsPricesSoapIn" />
+      <wsdl:output message="tns:MetalsPricesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IngotsPrices">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Цены покупки и продажи Национальным банком Республики Беларусь драгоценных металлов в виде мерных слитков</wsdl:documentation>
+      <wsdl:input message="tns:IngotsPricesSoapIn" />
+      <wsdl:output message="tns:IngotsPricesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IngotsLastDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Последняя дата установления Национальным банком Республики Беларусь цен покупки и продажи драгоценных металлов в виде мерных слитков</wsdl:documentation>
+      <wsdl:input message="tns:IngotsLastDateSoapIn" />
+      <wsdl:output message="tns:IngotsLastDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StockAddRates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Курс белорусского рубля по отношению к основным иностранным валютам по итогам дополнительной торговой сессии ОАО "Белорусская валютно-фондовая биржа"</wsdl:documentation>
+      <wsdl:input message="tns:StockAddRatesSoapIn" />
+      <wsdl:output message="tns:StockAddRatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StockAddRatesLastDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Последняя дата установления курса белорусского рубля по отношению к основным иностранным валютам по итогам дополнительной торговой сессии ОАО "Белорусская валютно-фондовая биржа"</wsdl:documentation>
+      <wsdl:input message="tns:StockAddRatesLastDateSoapIn" />
+      <wsdl:output message="tns:StockAddRatesLastDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RefRateOnDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ставка рефинансирования Национального банка на дату</wsdl:documentation>
+      <wsdl:input message="tns:RefRateOnDateSoapIn" />
+      <wsdl:output message="tns:RefRateOnDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RefRateDyn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Динамика ставки рефинансирования Национального банка</wsdl:documentation>
+      <wsdl:input message="tns:RefRateDynSoapIn" />
+      <wsdl:output message="tns:RefRateDynSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ExRatesSoap" type="tns:ExRatesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CurrenciesRefDaily">
+      <soap:operation soapAction="http://www.nbrb.by/CurrenciesRefDaily" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrenciesRefMonthly">
+      <soap:operation soapAction="http://www.nbrb.by/CurrenciesRefMonthly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartDate">
+      <soap:operation soapAction="http://www.nbrb.by/StartDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LastDailyExRatesDate">
+      <soap:operation soapAction="http://www.nbrb.by/LastDailyExRatesDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LastMonthlyExRatesDate">
+      <soap:operation soapAction="http://www.nbrb.by/LastMonthlyExRatesDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExRatesDaily">
+      <soap:operation soapAction="http://www.nbrb.by/ExRatesDaily" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExRatesMonthly">
+      <soap:operation soapAction="http://www.nbrb.by/ExRatesMonthly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExRatesDyn">
+      <soap:operation soapAction="http://www.nbrb.by/ExRatesDyn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrenciesRef">
+      <soap:operation soapAction="http://www.nbrb.by/CurrenciesRef" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MetalsLastDate">
+      <soap:operation soapAction="http://www.nbrb.by/MetalsLastDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MetalsRef">
+      <soap:operation soapAction="http://www.nbrb.by/MetalsRef" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MetalsPrices">
+      <soap:operation soapAction="http://www.nbrb.by/MetalsPrices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngotsPrices">
+      <soap:operation soapAction="http://www.nbrb.by/IngotsPrices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngotsLastDate">
+      <soap:operation soapAction="http://www.nbrb.by/IngotsLastDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StockAddRates">
+      <soap:operation soapAction="http://www.nbrb.by/StockAddRates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StockAddRatesLastDate">
+      <soap:operation soapAction="http://www.nbrb.by/StockAddRatesLastDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefRateOnDate">
+      <soap:operation soapAction="http://www.nbrb.by/RefRateOnDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefRateDyn">
+      <soap:operation soapAction="http://www.nbrb.by/RefRateDyn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ExRatesSoap12" type="tns:ExRatesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CurrenciesRefDaily">
+      <soap12:operation soapAction="http://www.nbrb.by/CurrenciesRefDaily" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrenciesRefMonthly">
+      <soap12:operation soapAction="http://www.nbrb.by/CurrenciesRefMonthly" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartDate">
+      <soap12:operation soapAction="http://www.nbrb.by/StartDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LastDailyExRatesDate">
+      <soap12:operation soapAction="http://www.nbrb.by/LastDailyExRatesDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LastMonthlyExRatesDate">
+      <soap12:operation soapAction="http://www.nbrb.by/LastMonthlyExRatesDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExRatesDaily">
+      <soap12:operation soapAction="http://www.nbrb.by/ExRatesDaily" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExRatesMonthly">
+      <soap12:operation soapAction="http://www.nbrb.by/ExRatesMonthly" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExRatesDyn">
+      <soap12:operation soapAction="http://www.nbrb.by/ExRatesDyn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrenciesRef">
+      <soap12:operation soapAction="http://www.nbrb.by/CurrenciesRef" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MetalsLastDate">
+      <soap12:operation soapAction="http://www.nbrb.by/MetalsLastDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MetalsRef">
+      <soap12:operation soapAction="http://www.nbrb.by/MetalsRef" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MetalsPrices">
+      <soap12:operation soapAction="http://www.nbrb.by/MetalsPrices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngotsPrices">
+      <soap12:operation soapAction="http://www.nbrb.by/IngotsPrices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngotsLastDate">
+      <soap12:operation soapAction="http://www.nbrb.by/IngotsLastDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StockAddRates">
+      <soap12:operation soapAction="http://www.nbrb.by/StockAddRates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StockAddRatesLastDate">
+      <soap12:operation soapAction="http://www.nbrb.by/StockAddRatesLastDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefRateOnDate">
+      <soap12:operation soapAction="http://www.nbrb.by/RefRateOnDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefRateDyn">
+      <soap12:operation soapAction="http://www.nbrb.by/RefRateDyn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExRates">
+    <wsdl:port name="ExRatesSoap" binding="tns:ExRatesSoap">
+      <soap:address location="http://www.nbrb.by/Services/ExRates.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ExRatesSoap12" binding="tns:ExRatesSoap12">
+      <soap12:address location="http://www.nbrb.by/Services/ExRates.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
