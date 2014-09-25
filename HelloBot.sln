@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkypeBotAdapterConsole", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotCommunication", "HelloBotCommunication\HelloBotCommunication.csproj", "{53EB844B-B3A7-4397-9DB3-84F5D9F30840}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nigrimmist.Modules", "Nigrimmist.Modules\Nigrimmist.Modules.csproj", "{27DADDF0-F3CB-4E65-9C8C-8EB3C3E4EDAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nigrimmist.Modules", "CustomModules\Nigrimmist.Modules\Nigrimmist.Modules.csproj", "{27DADDF0-F3CB-4E65-9C8C-8EB3C3E4EDAD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "TestConsoleApplication\Test.csproj", "{1EF49C78-B55A-45A5-BFC7-F4ACA5339FED}"
 EndProject

@@ -65,7 +65,7 @@
       <Project>{f9500b18-085e-4a3d-b215-75ec409e05da}</Project>
       <Name>BotCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nigrimmist.Modules\Nigrimmist.Modules.csproj">
+    <ProjectReference Include="..\CustomModules\Nigrimmist.Modules\Nigrimmist.Modules.csproj">
       <Project>{27daddf0-f3cb-4e65-9c8c-8eb3c3e4edad}</Project>
       <Name>Nigrimmist.Modules</Name>
     </ProjectReference>
