@@ -111,7 +111,7 @@ namespace BotCore
                                     {
                                         OnErrorOccured(ex);
                                     }
-                                    answerCallback(hnd.CallCommandList + " пал смертью храбрых :(");
+                                    answerCallback(command + " пал смертью храбрых :(");
                                 }
                             }
                             

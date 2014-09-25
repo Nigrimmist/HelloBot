@@ -14,12 +14,12 @@ namespace Yushko.Commands
     {
         public List<string> CallCommandList
         {
-            get { return new List<string>() { "курс" }; }
+            get { return new List<string>() { "курс", "exrate" }; }
         }
 
         public string CommandDescription
         {
-            get { return "курсы валют по НацБанку"; }
+            get { return "курсы валют по НацБанку. Добавьте \"помощь\" или \"help\" для справки по дополнительным аргументам "; }
         }
 
 
@@ -239,7 +239,7 @@ namespace Yushko.Commands
             StringBuilder result = new StringBuilder();
             if (eng)
             {
-                result.AppendLine("additional arguments:");
+                result.AppendLine("Additional arguments:");
                 result.AppendLine("all - all today's exchange rates");
                 result.AppendLine("codes - list of currency codes");
                 result.AppendLine("refrate - refinancing rate");
@@ -248,7 +248,7 @@ namespace Yushko.Commands
             }
             else
             {
-                result.AppendLine("дополнительные аргументы:");
+                result.AppendLine("Дополнительные аргументы:");
                 result.AppendLine("все - все курсы валют на сегодня");
                 result.AppendLine("коды - справочник кодов валют");
                 result.AppendLine("ставкареф - ставка рефинансирования");
@@ -274,5 +274,5 @@ namespace Yushko.Commands
             }
             return result;
         }
-    }  
+    }
 }
