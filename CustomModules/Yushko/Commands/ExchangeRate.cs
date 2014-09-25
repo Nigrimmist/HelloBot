@@ -34,7 +34,7 @@ namespace Yushko.Commands
             CultureInfo ruCulture = new CultureInfo( "ru-RU", false );
 
             ds = rates.ExRatesDaily(DateTime.Today);
-            DateTime ExRateDate = DateTime.Parse(ds.ExtendedProperties["onDate"].ToString());
+            DateTime ExRateDate = DateTime.Parse(ds.ExtendedProperties["onDate"].ToString(),CultureInfo.InvariantCulture);
             output.Append("Курс валют НБРБ на ");
             output.AppendLine(ExRateDate.Date.ToString("dd MMMM yyyy",ruCulture.DateTimeFormat));
 

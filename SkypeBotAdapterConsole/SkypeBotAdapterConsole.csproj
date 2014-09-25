@@ -65,6 +65,10 @@
       <Project>{111cf492-6831-47cb-8297-b22c9a752cb5}</Project>
       <Name>VariousHandlersLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomModules\Yushko\Yushko.csproj">
+      <Project>{4b061c6f-c37e-457d-829a-0cd545b36923}</Project>
+      <Name>Yushko</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelloBotCore\HelloBotCore.csproj">
       <Project>{f9500b18-085e-4a3d-b215-75ec409e05da}</Project>
       <Name>HelloBotCore</Name>
