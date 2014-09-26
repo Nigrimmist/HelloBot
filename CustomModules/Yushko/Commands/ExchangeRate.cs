@@ -111,12 +111,12 @@ namespace Yushko.Commands
         private string getConvertedCurrencies(string[] arg)
         {
             if (arg.Length < 2) return getExRates(false);
-            decimal amountToConvert = 0, convertedAmount = 0, srcExRate = 0, dstExRate = 0;
-            int srcCurrScale = 0, dstCurrScale = 0;
-            String srcExCurr = arg[1].ToUpper(), dstExCurr = "BYR";
-            if (arg.Length > 2) dstExCurr = arg[2].ToUpper();
+            decimal amountToConvert = 0, convertedAmount=0, srcExRate=0, dstExRate=0;
+            int srcCurrScale=0, dstCurrScale=0;
+            String srcExCurr = arg[1].ToUpper(), dstExCurr="BYR", unknownCurrencyCode="";
+            if (arg.Length>2) dstExCurr=arg[2].ToUpper();
 
-            if (!decimal.TryParse(arg[0], out amountToConvert)) return getExRates(false); ;
+            if (!decimal.TryParse(arg[0], out amountToConvert)) return getExRates(false);;
 
             if (ExRatesDaily.IsInitialized)
             {
@@ -154,15 +154,20 @@ namespace Yushko.Commands
                     {
                         convertedAmount = convertedAmount / dstExRate * dstCurrScale;
                     }
+                    else {
+                        unknownCurrencyCode += dstExCurr + " - неизвестный код валюты. \n";
+                        dstExCurr = "BYR";
+                    }
                 }
                 else
                 {
-                    return getExRates(false);
+                    unknownCurrencyCode += srcExCurr + " - неизвестный код валюты. \n";
+                    return unknownCurrencyCode + getExRates(false);
                 }
-                return string.Format("{0} {1} = {2} {3}", amountToConvert, srcExCurr, convertedAmount.ToString("#.##"), dstExCurr);
+                ruCulture.NumberFormat.NumberGroupSeparator = " ";
+                return string.Format("{0}{1} {2} = {3} {4}", unknownCurrencyCode, amountToConvert.ToString("N", ruCulture.NumberFormat), srcExCurr, convertedAmount.ToString("N", ruCulture.NumberFormat), dstExCurr);
             }
-            else
-            {
+            else {
                 return getExRates(false);
             }
         }
