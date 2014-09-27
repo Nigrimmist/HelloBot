@@ -154,7 +154,7 @@ namespace Test
         public int Timeout
         {
             get { return _timeout; }
-            set { _timeout = value; }
+            set { if (value >= 0) _timeout = value; }
         }
 
         public Encoding Encoding { get; set; }
@@ -283,7 +283,7 @@ namespace Test
                 }
                 if (Location != null)
                     LastPostLocation = Location;
-                if (Location == null)
+                else
                     break;
 
                 Uri uri = new Uri(new Uri(PreviousUri), Location);
@@ -332,7 +332,7 @@ namespace Test
                     case "GET":
                     {
                         //get first n bytes
-                        req.AddRange(0, maxFileSizeBytes - 1 + 1);
+                        req.AddRange(0, maxFileSizeBytes);
                         using (System.Net.WebResponse resp = req.GetResponse())
                         {
                             using (Stream stream = resp.GetResponseStream())
