@@ -28,7 +28,7 @@ namespace SmartAssHandlerLib
 
         public List<string> CallCommandList
         {
-            get { return new List<string>() { "бот" }; }
+            get { return new List<string>() { "бот", "бот," }; }
         }
 
         public string CommandDescription
