@@ -5,9 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-
-
-using BotCore;
+using HelloBotCore;
 using SKYPE4COMLib;
 
 namespace SkypeBotAdapterConsole

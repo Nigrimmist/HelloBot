@@ -6,7 +6,7 @@ namespace HelloBotCommunication
     public interface IActionHandler
     {
         /// <summary>
-        /// Call command list. Every
+        /// Call command list.
         /// </summary>
         List <string> CallCommandList { get;}
 

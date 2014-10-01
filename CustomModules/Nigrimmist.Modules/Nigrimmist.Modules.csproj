@@ -55,6 +55,7 @@
     <Compile Include="Commands\Calculator.cs" />
     <Compile Include="Commands\Bash.cs" />
     <Compile Include="Commands\ItHappens.cs" />
+    <Compile Include="Commands\WhatIsIt.cs" />
     <Compile Include="DllRegister.cs" />
     <Compile Include="Helpers\HtmlReaderManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

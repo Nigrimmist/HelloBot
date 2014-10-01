@@ -19,7 +19,8 @@ namespace Nigrimmist.Modules
                 new Say(),
                 new Translate(),
                 new Bash(),
-                new ItHappens()
+                new ItHappens(),
+                new WhatIsIt()
             };
         }
     }
