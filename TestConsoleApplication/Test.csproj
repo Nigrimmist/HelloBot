@@ -53,6 +53,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomModules\Nigrimmist.Modules\Nigrimmist.Modules.csproj">
+      <Project>{27daddf0-f3cb-4e65-9c8c-8eb3c3e4edad}</Project>
+      <Name>Nigrimmist.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelloBotCommunication\HelloBotCommunication.csproj">
+      <Project>{53eb844b-b3a7-4397-9db3-84f5d9f30840}</Project>
+      <Name>HelloBotCommunication</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,10 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-
 using HelloBotCommunication;
 
-namespace BotCore
+namespace HelloBotCore
 {
     public class HelloBot
     {
@@ -67,7 +66,7 @@ namespace BotCore
                     }
                 }
             }
-
+            
             return toReturn;
         }
 
@@ -88,11 +87,13 @@ namespace BotCore
                 }
                 else
                 {
-
-                    var foundHandlers = FindHandler(command);
-                    foreach (IActionHandler handler in foundHandlers)
+                    
+                    IActionHandler handler = FindHandler(incomingMessage,out command);
+                    
+                    if (handler!=null)
                     {
                         string args = incomingMessage.Substring((command).Length).Trim();
+                        
                         IActionHandler hnd = handler;
                         var cts = new CancellationTokenSource(TimeSpan.FromSeconds(commandTimeoutSec));
                         var token = cts.Token;
@@ -125,9 +126,33 @@ namespace BotCore
         public delegate void onErrorOccuredDelegate(Exception ex);
         public event onErrorOccuredDelegate OnErrorOccured;
 
-        private List<IActionHandler> FindHandler(string command)
+        private IActionHandler FindHandler(string phrase, out string command)
         {
-            return handlers.Where(x => x.CallCommandList.Any(y=>y.Equals(command, StringComparison.OrdinalIgnoreCase))).ToList();
+            IActionHandler toReturn = null;
+            command = string.Empty;
+            List<string> foundCommands = new List<string>();
+            foreach (var actionHandler in handlers)
+            {
+                foreach (var com in actionHandler.CallCommandList)
+                {
+                    if (phrase.StartsWith(com, StringComparison.OrdinalIgnoreCase))
+                    {
+                        foundCommands.Add(com);
+                    }
+                }
+            }
+
+            if (foundCommands.Any())
+            {
+                string foundCommand = foundCommands.OrderByDescending(x => x).First();
+                toReturn = handlers.FirstOrDefault(x => x.CallCommandList.Contains(foundCommand,StringComparer.OrdinalIgnoreCase));
+                if (toReturn != null)
+                {
+                    command = foundCommand;
+                }
+            }
+            
+            return toReturn;
         }
 
         private string GetSystemCommands()

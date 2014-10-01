@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
 using HtmlAgilityPack;
+using Nigrimmist.Modules.Commands;
 
 namespace Test
 {
@@ -18,40 +19,14 @@ namespace Test
         public static List<string> Jokes = new List<string>(); 
         static void Main(string[] args)
         {
-            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(3));
-            var token = cts.Token;
-            //todo:убивать таску после n секунд исполнения
-            Task.Run(() =>
+            List<string> s2 = new List<string>() {"мотоцикл", "монитор", "карандаш"};
+
+            foreach (var v in s2)
             {
-                using (cts.Token.Register(Thread.CurrentThread.Abort))
-                {
-                    while (true)
-                    {
-                        try
-                        {
-                            Console.WriteLine(DateTime.Now);
-                            Thread.Sleep(1000);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex);
-                        }
-                    }
-                }
-            }, token);
-
-
-            //new Timer(state =>
-            //{
-            //    Console.WriteLine("timer");
-            //    cts.Cancel();
-                
-            //}, null, 3000, 0);
-
-            while (true)
-            {
-                Thread.Sleep(1000);
+                new WhatIsIt().HandleMessage(v, null, s =>
+                    Console.WriteLine(s));
             }
+            Console.ReadLine();
         }
     }
 }
