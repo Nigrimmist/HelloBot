@@ -19,11 +19,11 @@ namespace Test
         public static List<string> Jokes = new List<string>(); 
         static void Main(string[] args)
         {
-            List<string> s2 = new List<string>() {"мотоцикл", "монитор", "карандаш"};
+            List<string> s2 = new List<string>() {"y минск якуба коласа 6"};
 
             foreach (var v in s2)
             {
-                new WhatIsIt().HandleMessage(v, null, s =>
+                new Map().HandleMessage(v, null, s =>
                     Console.WriteLine(s));
             }
             Console.ReadLine();
