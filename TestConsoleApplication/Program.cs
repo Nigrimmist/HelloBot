@@ -19,7 +19,7 @@ namespace Test
         public static List<string> Jokes = new List<string>(); 
         static void Main(string[] args)
         {
-            List<string> s2 = new List<string>() {"y минск якуба коласа 6"};
+            List<string> s2 = new List<string>() {"g минск якуба коласа 6 -> игнатовского 3"};
 
             foreach (var v in s2)
             {
