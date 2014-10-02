@@ -30,9 +30,17 @@ namespace Nigrimmist.Modules.Commands
             {"y", "http://maps.yandex.ru/?text={0}"},
         };
 
-        private string defaultProvider = "g";
+        private IDictionary<string, string> mapDirectionProviders = new Dictionary<string, string>()
+        {
+            {"g", "https://www.google.com/maps/dir/{0}/{1}"},
+            {"y", "https://maps.yandex.ru/?rtext={0}~{1}"},
+        };
 
-        private string helpMsg = @"Общий формат запроса : ""!map <опционально:поисковик> <адрес>"", где поисковик может быть y(yandex) или g(google). Например !map g Минск Ул Якуба Коласа 6";
+        private const string defaultProvider = "g";
+        private const string fromToDelimeter = "->";
+
+        private string helpMsg = string.Format(@"Общий формат запроса : ""!map <опционально:поисковик> <адрес>"", где поисковик может быть y(yandex) или g(google). Например !map g Минск Ул Якуба Коласа 6
+        Чтобы проложить маршрут из точки А в точку Б составьте запрос вида : ""!map <опционально:поисковик> <из>{0}<в>""", fromToDelimeter);
 
         public List<string> Images = new List<string>();
 
@@ -46,16 +54,41 @@ namespace Nigrimmist.Modules.Commands
                 {
                     sendMessageFunc(helpMsg);
                 }
+                else if (args.Contains(fromToDelimeter))
+                {
+                    var addressParts = args.Split(new []{fromToDelimeter},StringSplitOptions.RemoveEmptyEntries);
+                    if (addressParts.Count() == 2)
+                    {
+                        var leftPart = addressParts[0];
+                        var rightPart = addressParts[1];
+                        string foundProvider;
+                        if (!mapDirectionProviders.TryGetValue(inputProvider, out foundProvider))
+                        {
+                            inputProvider = defaultProvider;
+                            foundProvider = mapDirectionProviders[inputProvider];
+                        }
+                        else
+                        {
+                            leftPart = leftPart.Substring(inputProvider.Length).Trim();
+                        }
+                        
+                        sendMessageFunc(string.Format(foundProvider, HttpUtility.UrlEncode(leftPart), HttpUtility.UrlEncode(rightPart)));
+                    }
+                }
                 else
                 {
                     string foundProvider;
+                    string address = args;
                     if (!mapUrlProviders.TryGetValue(inputProvider, out foundProvider))
                     {
                         inputProvider = defaultProvider;
                         foundProvider = mapUrlProviders[inputProvider];
                     }
-
-                    string address = args.Substring(inputProvider.Length).Trim();
+                    else
+                    {
+                        address = args.Substring(inputProvider.Length).Trim();    
+                    }
+                    
                     sendMessageFunc(string.Format(foundProvider, HttpUtility.UrlEncode(address)));
                 }
             }
