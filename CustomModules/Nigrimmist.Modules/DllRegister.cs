@@ -20,7 +20,8 @@ namespace Nigrimmist.Modules
                 new Translate(),
                 new Bash(),
                 new ItHappens(),
-                new WhatIsIt()
+                new WhatIsIt(),
+                new Map()
             };
         }
     }
