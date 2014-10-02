@@ -38,6 +38,7 @@ namespace Nigrimmist.Modules.Commands
         public string CommandDescription { get { return @"Бот знает всё. Ну или почти всё."; } }
         public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
         {
+            args = args.Replace("?"," ").Trim();
             string answer = string.Empty;
 
             HtmlReaderManager hrm = new HtmlReaderManager();
