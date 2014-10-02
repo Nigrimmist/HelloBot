@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using HelloBotCommunication;
 using HtmlAgilityPack;
+using Newtonsoft.Json;
 using Nigrimmist.Modules.Helpers;
 
 namespace Nigrimmist.Modules.Commands
@@ -39,8 +41,8 @@ namespace Nigrimmist.Modules.Commands
         private const string defaultProvider = "g";
         private const string fromToDelimeter = "->";
 
-        private string helpMsg = string.Format(@"Общий формат запроса : ""!map <опционально:поисковик> <адрес>"", где поисковик может быть y(yandex) или g(google). Например !map g Минск Ул Якуба Коласа 6
-        Чтобы проложить маршрут из точки А в точку Б составьте запрос вида : ""!map <опционально:поисковик> <из>{0}<в>""", fromToDelimeter);
+        private string helpMsg = string.Format(@"""!map <опционально:поисковик> <адрес>"", где поисковик может быть y(yandex) или g(google).
+Проложить маршрут : ""!map <опционально:поисковик> <из>{0}<в>""", fromToDelimeter);
 
         public List<string> Images = new List<string>();
 
@@ -71,8 +73,8 @@ namespace Nigrimmist.Modules.Commands
                         {
                             leftPart = leftPart.Substring(inputProvider.Length).Trim();
                         }
-                        
-                        sendMessageFunc(string.Format(foundProvider, HttpUtility.UrlEncode(leftPart), HttpUtility.UrlEncode(rightPart)));
+                        string url = string.Format(foundProvider, HttpUtility.UrlEncode(leftPart), HttpUtility.UrlEncode(rightPart));
+                        sendMessageFunc(PrepareUrl(url));
                     }
                 }
                 else
@@ -88,12 +90,22 @@ namespace Nigrimmist.Modules.Commands
                     {
                         address = args.Substring(inputProvider.Length).Trim();    
                     }
-                    
-                    sendMessageFunc(string.Format(foundProvider, HttpUtility.UrlEncode(address)));
+                    string url = string.Format(foundProvider, HttpUtility.UrlEncode(address));
+                    sendMessageFunc(PrepareUrl(url));
                 }
             }
         }
 
+        private string PrepareUrl(string url)
+        {
+            string shortenerPostUrl = "https://www.googleapis.com/urlshortener/v1/url";
+            string postData = string.Format(@"{{""longUrl"": ""{0}""}}", url);
+            HtmlReaderManager hrm = new HtmlReaderManager();
+            hrm.ContentType = "application/json";
+            hrm.Post(shortenerPostUrl, postData);
 
+            var response = JsonConvert.DeserializeObject<dynamic>(hrm.Html);
+            return response.id;
+        }
     }
 }

@@ -184,7 +184,7 @@ namespace Nigrimmist.Modules.Helpers
 
             if (method == "POST")
             {
-                request.ContentType = string.IsNullOrEmpty(ContentType)? "application/x-www-form-urlencoded":string.Empty;
+                request.ContentType = string.IsNullOrEmpty(ContentType) ? "application/x-www-form-urlencoded" : ContentType;
                 request.AllowAutoRedirect = false;
             }
             else
