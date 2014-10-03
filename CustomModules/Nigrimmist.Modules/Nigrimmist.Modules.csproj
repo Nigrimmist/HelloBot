@@ -58,6 +58,7 @@
     <Compile Include="Commands\Calculator.cs" />
     <Compile Include="Commands\Bash.cs" />
     <Compile Include="Commands\ItHappens.cs" />
+    <Compile Include="Commands\LangExecuter.cs" />
     <Compile Include="Commands\Map.cs" />
     <Compile Include="Commands\WhatIsIt.cs" />
     <Compile Include="DllRegister.cs" />
