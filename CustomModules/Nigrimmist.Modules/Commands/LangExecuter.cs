@@ -57,8 +57,8 @@ namespace Rextester
 
                 if (!string.IsNullOrEmpty(toReturn))
                 {
-                    toReturn = toReturn.Trim();
-                    sendMessageFunc(toReturn.Length > 200 ? toReturn.Substring(200) + "..." : toReturn);
+                    toReturn = toReturn.Replace(Environment.NewLine," ").Trim();
+                    sendMessageFunc(toReturn.Length > 200 ? toReturn.Substring(0,50) + "..." : toReturn);
                 }
                 
                 
@@ -70,6 +70,7 @@ namespace Rextester
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("За основу взят сайт http://rextester.com/runcode.");
             sb.AppendLine("Поддерживает многострочность. Для вывода использовать Out() метод. Например, Out(1+2);");
+            sb.AppendLine("Вывод ограничен 50 символами.");
             return sb.ToString();
         }
     }

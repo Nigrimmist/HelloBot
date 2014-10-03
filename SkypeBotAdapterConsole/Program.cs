@@ -64,6 +64,10 @@ namespace SkypeBotAdapterConsole
         public static object _lock = new object();
         private static void SendMessage(string message, Chat toChat)
         {
+            if (message.StartsWith("/"))
+            {
+                message = "(heidy) " + message;
+            }
                 lock (_lock)
                 {
                     toChat.SendMessage(message);

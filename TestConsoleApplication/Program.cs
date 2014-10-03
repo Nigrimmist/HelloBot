@@ -19,7 +19,7 @@ namespace Test
         public static List<string> Jokes = new List<string>(); 
         static void Main(string[] args)
         {
-            List<string> s2 = new List<string>() { "Out(1);" };
+            List<string> s2 = new List<string>() { "while(true)Out(1);" };
 
             foreach (var v in s2)
             {
