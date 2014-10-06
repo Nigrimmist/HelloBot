@@ -15,7 +15,6 @@ namespace Nigrimmist.Modules.Commands
     /// </summary>
     public class ProstiteCom : IActionHandler
     {
-        public List<string> Jokes = new List<string>();
         private Random r = new Random();
 
         public List<string> CallCommandList
@@ -23,27 +22,18 @@ namespace Nigrimmist.Modules.Commands
             get { return new List<string>() { "простите", "prostite" }; }
         }
         public string CommandDescription { get { return @"Случайная история с http://prostite.com"; } }
+
         public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
         {
-            if (!Jokes.Any())
-            {
-                HtmlReaderManager hrm = new HtmlReaderManager();
 
-                hrm.Get("https://prostite.com");
-                string html = hrm.Html;
-                HtmlDocument htmlDoc = new HtmlDocument();
-                htmlDoc.LoadHtml(html);
-                var divs = htmlDoc.DocumentNode.SelectNodes(@"//./div[@class='text']");
+            HtmlReaderManager hrm = new HtmlReaderManager();
 
-                foreach (var div in divs)
-                {
-                    Jokes.Add(HttpUtility.HtmlDecode(div.InnerHtml).Trim());
-                }
-            }
-            int rPos = r.Next(0, Jokes.Count - 1);
-            string joke = Jokes[rPos];
-            Jokes.RemoveAt(rPos);
-            sendMessageFunc(joke);
+            hrm.Get("https://prostite.com");
+            string html = hrm.Html;
+            HtmlDocument htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(html);
+            var div = htmlDoc.DocumentNode.SelectSingleNode(@"//./div[@class='text']");
+            sendMessageFunc(HttpUtility.HtmlDecode(div.InnerHtml));
         }
     }
 }
