@@ -137,6 +137,8 @@ namespace HelloBotCore
                 {
                     if (phrase.StartsWith(com, StringComparison.OrdinalIgnoreCase))
                     {
+                        var args = phrase.Substring(com.Length);
+                        if (string.IsNullOrEmpty(args) || args.StartsWith(" "))
                         foundCommands.Add(com);
                     }
                 }

@@ -72,6 +72,10 @@ namespace Nigrimmist.Modules.Commands
             {
                 answer = notFoundAnswers[r.Next(0,notFoundAnswers.Count-1)];
             }
+            else
+            {
+                answer += ". " + hrm.ResponseUri;
+            }
 
             sendMessageFunc(answer);
         }

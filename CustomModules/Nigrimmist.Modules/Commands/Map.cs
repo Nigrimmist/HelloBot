@@ -24,8 +24,7 @@ namespace Nigrimmist.Modules.Commands
             get { return @"Генерирует ссылку на карту по адресу. Добавьте help для просмотра справки."; }
         }
 
-        private Random r = new Random();
-
+       
         private IDictionary<string, string> mapUrlProviders = new Dictionary<string, string>()
         {
             {"g", "http://maps.google.com/?q={0}"},
@@ -44,10 +43,10 @@ namespace Nigrimmist.Modules.Commands
         private string helpMsg = string.Format(@"""!map <опционально:поисковик> <адрес>"", где поисковик может быть y(yandex) или g(google).
 Проложить маршрут : ""!map <опционально:поисковик> <из>{0}<в>""", fromToDelimeter);
 
-        public List<string> Images = new List<string>();
+       public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+       {
+           
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
-        {
             if (!string.IsNullOrEmpty(args))
             {
                 string inputProvider = args.Split(' ').First();

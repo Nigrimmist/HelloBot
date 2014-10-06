@@ -21,7 +21,10 @@ namespace Nigrimmist.Modules
                 new Bash(),
                 new ItHappens(),
                 new WhatIsIt(),
-                new Map()
+                new Map(),
+                new LangExecuter(),
+                new ProstiteCom(),
+                new Advice()
             };
         }
     }
