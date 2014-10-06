@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Web.Script.Serialization;
@@ -29,60 +31,72 @@ namespace Yushko.Commands
     public class Sorry : IActionHandler
     {
         public List<string> CallCommandList {
-            get { return new List<string>() { "простите" }; }
+            get { return new List<string>() { "простите", "sorry" }; }
         }
-        private string NextSlug;
+        
+        private string NextSlug = String.Empty;
 
         /// <summary>
         /// Sending GET request.
         /// </summary>
         /// <param name="Url">Request Url.</param>
+        /// <param name="Headers">Request Headers.</param>
         /// <param name="Data">Data for request.</param>
         /// <returns>Response body.</returns>
-        public static string HTTP_GET(string Url, string Data)
+        public static string HTTP_GET(string Url, NameValueCollection Headers,string Data)
         {
-            string Out = String.Empty;
-            System.Net.WebRequest req = System.Net.WebRequest.Create(Url + (string.IsNullOrEmpty(Data) ? "" : "?" + Data));
-            req.Headers.Add("X-Requested-With", "XMLHttpRequest");
+            string result = String.Empty;
+            WebRequest req = WebRequest.Create(Url + (string.IsNullOrEmpty(Data) ? "" : "?" + Data));
+            req.Headers.Add(Headers);
             try
             {
-                System.Net.WebResponse resp = req.GetResponse();
-                using (System.IO.Stream stream = resp.GetResponseStream())
+                WebResponse resp = req.GetResponse();
+                using (Stream stream = resp.GetResponseStream())
                 {
-                    
-                    using (System.IO.StreamReader sr = new System.IO.StreamReader(stream, Encoding.ASCII))
+                    using (StreamReader sr = new StreamReader(stream))
                     {
-                        Out = sr.ReadToEnd();
+                        result = sr.ReadToEnd();
                         sr.Close();
                     }
                 }
             }
             catch (ArgumentException ex)
             {
-                Out = string.Format("HTTP_ERROR :: The second HttpWebRequest object has raised an Argument Exception as 'Connection' Property is set to 'Close' :: {0}", ex.Message);
+                result = string.Format("HTTP_ERROR :: The second HttpWebRequest object has raised an Argument Exception as 'Connection' Property is set to 'Close' :: {0}", ex.Message);
             }
             catch (WebException ex)
             {
-                Out = string.Format("HTTP_ERROR :: WebException raised! :: {0}", ex.Message);
+                result = string.Format("HTTP_ERROR :: WebException raised! :: {0}", ex.Message);
             }
             catch (Exception ex)
             {
-                Out = string.Format("HTTP_ERROR :: Exception raised! :: {0}", ex.Message);
+                result = string.Format("HTTP_ERROR :: Exception raised! :: {0}", ex.Message);
             }
 
-            return Out;
+            return result;
         }
 
         public string CommandDescription { get { return @"казнить нельзя помиловать"; } }
 
         public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
         {
+            string result = String.Empty;
+            NameValueCollection headers = new NameValueCollection();
+            headers.Add("X-Requested-With", "XMLHttpRequest");
             string url = "https://prostite.com";
-            string resp = HTTP_GET(url + "/" + NextSlug,"");
-            JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-            Slug slugobj= json_serializer.Deserialize<Slug>(resp);
-            NextSlug = slugobj.nextSlug;
-            sendMessageFunc(slugobj.post.text);
+            string resp = HTTP_GET(url + "/" + NextSlug, headers, "");
+            result = resp;
+            try
+            {
+                JavaScriptSerializer json_serializer = new JavaScriptSerializer();
+                Slug slugobj = json_serializer.Deserialize<Slug>(resp);
+                NextSlug = slugobj.nextSlug;
+                result = slugobj.post.text;
+            }
+            finally
+            {
+                sendMessageFunc(result);
+            }
         }
     }
 }
