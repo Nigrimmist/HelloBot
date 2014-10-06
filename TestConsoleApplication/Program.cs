@@ -23,7 +23,7 @@ namespace Test
 
             foreach (var v in s2)
             {
-                new LangExecuter().HandleMessage(v, null, s =>
+                new ProstiteCom().HandleMessage(v, null, s =>
                     Console.WriteLine(s));
             }
             Console.ReadLine();

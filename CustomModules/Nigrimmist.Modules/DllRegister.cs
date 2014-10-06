@@ -22,7 +22,8 @@ namespace Nigrimmist.Modules
                 new ItHappens(),
                 new WhatIsIt(),
                 new Map(),
-                new LangExecuter()
+                new LangExecuter(),
+                new ProstiteCom()
             };
         }
     }
