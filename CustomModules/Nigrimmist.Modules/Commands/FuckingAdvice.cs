@@ -21,7 +21,7 @@ namespace Nigrimmist.Modules.Commands
         {
             get { return new List<string>() { "дай совет", "advice" }; }
         }
-        public string CommandDescription { get { return @"Случайная история с http://fucking-great-advice.ru/"; } }
+        public string CommandDescription { get { return @"Случайный совет с http://fucking-great-advice.ru/"; } }
 
         public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
         {
@@ -30,8 +30,8 @@ namespace Nigrimmist.Modules.Commands
             hrm.Encoding = Encoding.GetEncoding(1251);
             hrm.Get("http://fucking-great-advice.ru/api/random");
             var json = JsonConvert.DeserializeObject<dynamic>(hrm.Html);
-
-            sendMessageFunc(json.text.ToString());
+            string advice = json.text.ToString();
+            sendMessageFunc(HttpUtility.HtmlDecode(advice.RemoveAllTags()));
         }
     }
 }

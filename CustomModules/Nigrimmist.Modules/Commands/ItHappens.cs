@@ -34,7 +34,7 @@ namespace Nigrimmist.Modules.Commands
 
                 foreach (var div in divs)
                 {
-                    Jokes.Add(Regex.Replace(HttpUtility.HtmlDecode(div.InnerHtml.Replace("<p>", "").Replace("</p>", Environment.NewLine + Environment.NewLine)), @"<[^>]*>", String.Empty).Trim());
+                    Jokes.Add(div.InnerHtml.Replace("<p>", "").Replace("</p>", Environment.NewLine + Environment.NewLine).RemoveAllTags().Trim());
                 }
             }
             int rPos = r.Next(0, Jokes.Count - 1);

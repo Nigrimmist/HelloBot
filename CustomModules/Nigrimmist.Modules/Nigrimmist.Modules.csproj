@@ -65,6 +65,7 @@
     <Compile Include="Commands\WhatIsIt.cs" />
     <Compile Include="DllRegister.cs" />
     <Compile Include="Helpers\HtmlReaderManager.cs" />
+    <Compile Include="Helpers\NigrimmistUtilityExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\Say.cs" />
     <Compile Include="Commands\Translate.cs" />
