@@ -10,7 +10,8 @@ namespace Yushko
         {
             return new List<IActionHandler>()
             {
-                new ExchangeRate()
+                new ExchangeRate(),
+                new Sorry()
             };
         }
     }
