@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
@@ -15,8 +16,6 @@ namespace Nigrimmist.Modules.Commands
     /// </summary>
     public class ProstiteCom : IActionHandler
     {
-        private Random r = new Random();
-
         public List<string> CallCommandList
         {
             get { return new List<string>() { "простите", "prostite" }; }
@@ -27,7 +26,7 @@ namespace Nigrimmist.Modules.Commands
         {
 
             HtmlReaderManager hrm = new HtmlReaderManager();
-
+            
             hrm.Get("https://prostite.com");
             string html = hrm.Html;
             HtmlDocument htmlDoc = new HtmlDocument();
