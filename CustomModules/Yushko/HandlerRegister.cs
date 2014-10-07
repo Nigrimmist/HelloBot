@@ -11,7 +11,8 @@ namespace Yushko
             return new List<IActionHandler>()
             {
                 new ExchangeRate(),
-                new Sorry()
+                new Sorry(),
+                new Horoscope()
             };
         }
     }

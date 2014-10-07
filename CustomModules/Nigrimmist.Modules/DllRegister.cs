@@ -23,7 +23,6 @@ namespace Nigrimmist.Modules
                 new WhatIsIt(),
                 new Map(),
                 new LangExecuter(),
-                new ProstiteCom(),
                 new Advice()
             };
         }
