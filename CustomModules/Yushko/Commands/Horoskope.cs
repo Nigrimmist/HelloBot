@@ -46,10 +46,10 @@ namespace Yushko.Commands
             string url = "http://goroskop.open.by/pda/";
             StringBuilder result = new StringBuilder();
             string sign, term="today", category="ОБЩИЙ";
-
+            string help = "!гороскоп <знак зодиака> [общий/эротический/антигороскоп/бизнес/любовный/здоровье/кулинарный/мобильный] [сегодня/завтра/неделя/месяц/год]";
             if (arg.Length == 0)
             {
-                sendMessageFunc("!гороскоп <знак зодиака> [общий/эротический/антигороскоп/бизнес/любовный/здоровье/кулинарный/мобильный] [сегодня/завтра/неделя/месяц/год]");
+                sendMessageFunc(help);
                 return;
             }
 
@@ -59,19 +59,28 @@ namespace Yushko.Commands
             }
             else
             {
-                sendMessageFunc(arg[0] + " - неверный знак зодиака");
+                if (string.IsNullOrEmpty(arg[0])){
+                    sendMessageFunc(help);
+                }else{
+                    sendMessageFunc(arg[0] + " - неверный знак зодиака");
+                }
                 return;
             }
 
-            if (arg.Length >= 2)
-            {
-                category = arg[1].ToUpper();
-            }
+            if (arg.Length == 2) {
+               if (!Terms.TryGetValue(arg[1].ToUpper(), out term))
+                    category = arg[1].ToUpper();
+            }else{
+                if (arg.Length >= 2)
+                {
+                        category = arg[1].ToUpper();
+                }
 
-            if ((arg.Length >= 3) && (!Terms.TryGetValue(arg[2].ToUpper(), out term)))
-            {
-                result.Append(arg[2].ToUpper() + " - неверно задан срок. Возможные варианты: [сегодня/завтра/неделя/месяц/год] ");
-                result.Append(Environment.NewLine);
+                if ((arg.Length >= 3) && (!Terms.TryGetValue(arg[2].ToUpper(), out term)))
+                {
+                    result.Append(arg[2].ToUpper() + " - неверно задан срок. Возможные варианты: [сегодня/завтра/неделя/месяц/год] ");
+                    result.Append(Environment.NewLine);
+                }
             }
             url += term;
 
