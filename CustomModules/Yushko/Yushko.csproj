@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Moon.cs" />
     <Compile Include="Commands\Horoskope.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -12,7 +12,8 @@ namespace Yushko
             {
                 new ExchangeRate(),
                 new Sorry(),
-                new Horoscope()
+                new Horoscope(),
+                new Moon()
             };
         }
     }
