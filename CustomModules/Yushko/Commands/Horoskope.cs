@@ -13,7 +13,7 @@ namespace Yushko.Commands
             get { return new List<string>() { "гороскоп", "horo"}; }
         }
 
-        public string CommandDescription { get { return @"гороскоп <знак зодиака> [общий/эротический/антигороскоп/бизнес/любовный/здоровье/кулинарный/мобильный] [сегодня/завтра/неделя/месяц/год]"; } }
+        public string CommandDescription { get { return @"гороскоп <знак зодиака>"; } }
 
         private IDictionary<string, string> Signs = new Dictionary<string, string>()
         {
