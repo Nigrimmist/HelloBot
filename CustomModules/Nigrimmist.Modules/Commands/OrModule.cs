@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HelloBotCommunication;
 using HelloBotModuleHelper;
@@ -30,7 +31,7 @@ namespace Nigrimmist.Modules.Commands
 
         public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
         {
-            var variants = args.ToLower().Split(new[] { "или" }, StringSplitOptions.RemoveEmptyEntries);
+            var variants = Regex.Split(args, "или", RegexOptions.IgnoreCase);
             string answer = "А что, есть выбор?";
             if (variants.Any())
             {
