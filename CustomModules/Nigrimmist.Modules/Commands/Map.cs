@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using HelloBotCommunication;
+using HelloBotModuleHelper;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Nigrimmist.Modules.Helpers;

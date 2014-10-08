@@ -5,7 +5,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace Nigrimmist.Modules.Helpers
+namespace HelloBotModuleHelper
 {
     /// <summary>
     /// Encapsulates WebReader functions.

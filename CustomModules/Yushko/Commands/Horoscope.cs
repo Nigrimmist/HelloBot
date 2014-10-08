@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using HelloBotCommunication;
+using HelloBotModuleHelper;
 using HtmlAgilityPack;
-using Nigrimmist.Modules.Helpers;
+
 
 namespace Yushko.Commands
 {

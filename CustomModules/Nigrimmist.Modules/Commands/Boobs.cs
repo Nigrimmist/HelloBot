@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using HelloBotCommunication;
+using HelloBotModuleHelper;
 using HtmlAgilityPack;
 using Nigrimmist.Modules.Helpers;
 

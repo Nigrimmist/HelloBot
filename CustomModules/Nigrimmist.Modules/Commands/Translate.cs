@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 
 using HelloBotCommunication;
+using HelloBotModuleHelper;
 using Nigrimmist.Modules.Helpers;
 
 namespace Nigrimmist.Modules.Commands
