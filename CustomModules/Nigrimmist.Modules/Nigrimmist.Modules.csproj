@@ -61,6 +61,7 @@
     <Compile Include="Commands\ItHappens.cs" />
     <Compile Include="Commands\LangExecuter.cs" />
     <Compile Include="Commands\Map.cs" />
+    <Compile Include="Commands\OrModule.cs" />
     <Compile Include="Commands\WhatIsIt.cs" />
     <Compile Include="DllRegister.cs" />
     <Compile Include="Helpers\NigrimmistUtilityExtensions.cs" />

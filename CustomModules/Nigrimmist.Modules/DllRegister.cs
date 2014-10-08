@@ -23,7 +23,8 @@ namespace Nigrimmist.Modules
                 new WhatIsIt(),
                 new Map(),
                 new LangExecuter(),
-                new Advice()
+                new Advice(),
+                new OrModule()
             };
         }
     }

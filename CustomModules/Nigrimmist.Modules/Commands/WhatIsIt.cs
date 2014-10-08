@@ -71,7 +71,7 @@ namespace Nigrimmist.Modules.Commands
 
             if(string.IsNullOrEmpty(answer))
             {
-                answer = notFoundAnswers[r.Next(0,notFoundAnswers.Count-1)];
+                answer = notFoundAnswers[r.Next(0,notFoundAnswers.Count)];
             }
             else
             {

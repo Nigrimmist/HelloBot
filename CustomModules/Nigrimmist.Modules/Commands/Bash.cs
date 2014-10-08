@@ -36,7 +36,7 @@ namespace Nigrimmist.Modules.Commands
                     Jokes.Add(HttpUtility.HtmlDecode(div.InnerHtml.Replace("<br>", Environment.NewLine)));
                 }
             }
-            int rPos = r.Next(0, Jokes.Count - 1);
+            int rPos = r.Next(0, Jokes.Count );
             string joke = Jokes[rPos];
             Jokes.RemoveAt(rPos);
             sendMessageFunc(joke);

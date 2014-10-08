@@ -33,7 +33,7 @@ namespace Nigrimmist.Modules.Commands
                     Images.Add(div.Attributes["src"].Value);
                 }
             }
-            int rPos = r.Next(0, Images.Count - 1);
+            int rPos = r.Next(0, Images.Count);
             string url = Images[rPos];
             Images.RemoveAt(rPos);
             sendMessageFunc("Только тссс... никому. Ок? "+url);
