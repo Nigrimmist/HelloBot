@@ -30,10 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\Dependencies\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Nigrimmist.Modules">
+      <HintPath>..\Nigrimmist.Modules\bin\Debug\Nigrimmist.Modules.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,6 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Moon.cs" />
+    <Compile Include="Commands\Horoskope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\Sorry.cs" />
     <Compile Include="Commands\ExchangeRate.cs" />
     <Compile Include="HandlerRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

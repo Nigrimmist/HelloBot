@@ -19,7 +19,7 @@ namespace Yushko.Commands
 
         public string CommandDescription
         {
-            get { return "курсы валют по НацБанку. Добавьте \"помощь\" или \"help\" для справки по дополнительным аргументам "; }
+            get { return "курсы валют по НацБанку. Для справки добавьте \"помощь\" или \"help\""; }
         }
 
 
