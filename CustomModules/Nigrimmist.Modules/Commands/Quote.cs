@@ -33,7 +33,7 @@ namespace Nigrimmist.Modules.Commands
             var answerParts = hrm.Html.Split(new string[]{"##"},StringSplitOptions.RemoveEmptyEntries);
             string quote = answerParts[0];
             string author = answerParts[1];
-            sendMessageFunc(string.Format("{0} (c){1}",quote , author));
+            sendMessageFunc(string.Format("{0} ©{1}", quote, author));
         }
     }
 }
