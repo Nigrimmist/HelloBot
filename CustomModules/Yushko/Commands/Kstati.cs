@@ -10,7 +10,7 @@ namespace Yushko.Commands
     public class Kstati : IActionHandler
     {
         public List<string> CallCommandList {
-            get { return new List<string>() { "кстати", ""}; }
+            get { return new List<string>() { "кстати"}; }
         }
 
         public string CommandDescription { get { return @"Интересный факт одной строкой"; } }
@@ -19,7 +19,7 @@ namespace Yushko.Commands
         public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
         {
             string url = "http://know-that.ru/randomizer.php";
-            String result = string.Empty;
+            string result = string.Empty;
 
             HtmlReaderManager hrm = new HtmlReaderManager();
             hrm.Encoding = Encoding.GetEncoding(1251);
