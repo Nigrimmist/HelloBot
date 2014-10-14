@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using HelloBotCommunication;
@@ -164,7 +165,13 @@ namespace HelloBotCore
 
         private string GetUserDefinedCommands()
         {
-            return String.Join(Environment.NewLine, handlers.Select(x => String.Format("{0} - {1}", string.Join(" / ", x.CallCommandList.Select(y => botCommandPrefix + y)), x.CommandDescription)).ToList());
+            StringBuilder sb = new StringBuilder();
+            
+            sb.Append(String.Join(Environment.NewLine, handlers.Select(x => String.Format("{0} - {1}", string.Join(" / ", x.CallCommandList.Select(y => botCommandPrefix + y)), x.CommandDescription)).ToList()));
+            sb.AppendLine("");
+            sb.AppendLine("Запили свой модуль : https://github.com/Nigrimmist/HelloBot");
+
+            return sb.ToString();
         }
     }
 
