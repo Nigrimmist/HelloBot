@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
+using HelloBotCore;
 using Nigrimmist.Modules.Commands;
 
 namespace Test
@@ -18,13 +19,21 @@ namespace Test
         public static List<string> Jokes = new List<string>(); 
         static void Main(string[] args)
         {
-            List<string> s2 = new List<string>() { "Сиськи" };
 
-            foreach (var v in s2)
+            HelloBot bot = new HelloBot();
+            bot.HandleMessage("!погода", s =>
             {
-                new Quote().HandleMessage(v, null, s =>
-                    Console.WriteLine(s));
-            }
+                Console.WriteLine(s);
+            },null);
+            
+
+            //List<string> s2 = new List<string>() { "Сиськи" };
+
+            //foreach (var v in s2)
+            //{
+            //    new Quote().HandleMessage(v, null, s =>
+            //        Console.WriteLine(s));
+            //}
             Console.ReadLine();
         }
     }

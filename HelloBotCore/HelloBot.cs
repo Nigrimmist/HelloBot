@@ -73,52 +73,52 @@ namespace HelloBotCore
 
         public void HandleMessage(string incomingMessage, Action<string> answerCallback, object data)
         {
-            if (incomingMessage.StartsWith(botCommandPrefix))
+            if (incomingMessage.Contains(botCommandPrefix))
             {
-                incomingMessage = incomingMessage.Substring(botCommandPrefix.Length);
-                var argsSpl = incomingMessage.Split(' ');
-
-                var command = argsSpl[0];
-
-                var systemCommandList = systemCommands.Where(x => x.Key.ToLower() == command.ToLower()).ToList();
-                if (systemCommandList.Any())
-                {
-                    var systemComand = systemCommandList.First();
-                    answerCallback(systemComand.Value.Item2());
-                }
-                else
+                var command = incomingMessage.Substring(incomingMessage.IndexOf(botCommandPrefix, StringComparison.InvariantCulture) + botCommandPrefix.Length);
+                if (!string.IsNullOrEmpty(command))
                 {
                     
-                    IActionHandler handler = FindHandler(incomingMessage,out command);
-                    
-                    if (handler!=null)
+                    var systemCommandList = systemCommands.Where(x => x.Key.ToLower() == command.ToLower()).ToList();
+                    if (systemCommandList.Any())
                     {
-                        string args = incomingMessage.Substring((command).Length).Trim();
-                        
-                        IActionHandler hnd = handler;
-                        var cts = new CancellationTokenSource(TimeSpan.FromSeconds(commandTimeoutSec));
-                        var token = cts.Token;
-                        
-                        Task.Run(() =>
-                        {
-                            using (cts.Token.Register(Thread.CurrentThread.Abort))
-                            {
-                                try
-                                {
-                                    hnd.HandleMessage(args, data, answerCallback);
-                                }
-                                catch (Exception ex)
-                                {
-                                    if (OnErrorOccured != null)
-                                    {
-                                        OnErrorOccured(ex);
-                                    }
-                                    answerCallback(command + " пал смертью храбрых :(");
-                                }
-                            }
-                            
-                        },token);
+                        var systemComand = systemCommandList.First();
+                        answerCallback(systemComand.Value.Item2());
+                    }
+                    else
+                    {
 
+                        IActionHandler handler = FindHandler(command, out command);
+
+                        if (handler != null)
+                        {
+                            string args = incomingMessage.Substring(incomingMessage.IndexOf(command, StringComparison.InvariantCulture) + command.Length).Trim();
+
+                            IActionHandler hnd = handler;
+                            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(commandTimeoutSec));
+                            var token = cts.Token;
+
+                            Task.Run(() =>
+                            {
+                                using (cts.Token.Register(Thread.CurrentThread.Abort))
+                                {
+                                    try
+                                    {
+                                        hnd.HandleMessage(args, data, answerCallback);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        if (OnErrorOccured != null)
+                                        {
+                                            OnErrorOccured(ex);
+                                        }
+                                        answerCallback(command + " пал смертью храбрых :(");
+                                    }
+                                }
+
+                            }, token);
+
+                        }
                     }
                 }
             }
