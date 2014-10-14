@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using HelloBotCommunication;
+using HelloBotModuleHelper;
 using HtmlAgilityPack;
 using Nigrimmist.Modules.Helpers;
 
@@ -70,7 +71,7 @@ namespace Nigrimmist.Modules.Commands
 
             if(string.IsNullOrEmpty(answer))
             {
-                answer = notFoundAnswers[r.Next(0,notFoundAnswers.Count-1)];
+                answer = notFoundAnswers[r.Next(0,notFoundAnswers.Count)];
             }
             else
             {

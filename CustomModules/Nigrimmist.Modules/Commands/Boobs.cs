@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using HelloBotCommunication;
+using HelloBotModuleHelper;
 using HtmlAgilityPack;
 using Nigrimmist.Modules.Helpers;
 
@@ -11,7 +12,7 @@ namespace Nigrimmist.Modules.Commands
 {
     public class Boobs : IActionHandler
     {
-        public List<string> CallCommandList { get { return new List<string>() { "сиськи","boobs" }; } }
+        public List<string> CallCommandList { get { return new List<string>() { "сиськи","boobs","с" }; } }
         public string CommandDescription { get { return "Ну а что тут объяснять. Сиськи."; } }
         private Random r = new Random();
         public List<string> Images = new List<string>(); 
@@ -32,7 +33,7 @@ namespace Nigrimmist.Modules.Commands
                     Images.Add(div.Attributes["src"].Value);
                 }
             }
-            int rPos = r.Next(0, Images.Count - 1);
+            int rPos = r.Next(0, Images.Count);
             string url = Images[rPos];
             Images.RemoveAt(rPos);
             sendMessageFunc("Только тссс... никому. Ок? "+url);

@@ -58,13 +58,12 @@
     <Compile Include="Commands\Calculator.cs" />
     <Compile Include="Commands\Bash.cs" />
     <Compile Include="Commands\FuckingAdvice.cs" />
-    <Compile Include="Commands\ProstiteCom.cs" />
     <Compile Include="Commands\ItHappens.cs" />
     <Compile Include="Commands\LangExecuter.cs" />
     <Compile Include="Commands\Map.cs" />
+    <Compile Include="Commands\OrModule.cs" />
     <Compile Include="Commands\WhatIsIt.cs" />
     <Compile Include="DllRegister.cs" />
-    <Compile Include="Helpers\HtmlReaderManager.cs" />
     <Compile Include="Helpers\NigrimmistUtilityExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\Say.cs" />
@@ -75,6 +74,10 @@
     <ProjectReference Include="..\..\HelloBotCommunication\HelloBotCommunication.csproj">
       <Project>{53eb844b-b3a7-4397-9db3-84f5d9f30840}</Project>
       <Name>HelloBotCommunication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HelloBotModuleHelper\HelloBotModuleHelper.csproj">
+      <Project>{5b94e739-fad8-4a23-ab11-3edd24f57d35}</Project>
+      <Name>HelloBotModuleHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

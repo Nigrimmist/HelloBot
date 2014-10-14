@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using HelloBotCommunication;
+using HelloBotModuleHelper;
 using HtmlAgilityPack;
 using Nigrimmist.Modules.Helpers;
 
@@ -23,6 +24,7 @@ namespace Nigrimmist.Modules.Commands
             htmlDoc.LoadHtml(html);
             var tds = htmlDoc.DocumentNode.SelectNodes(@"//./td[@class='fcurrent-top' or @class='fcurrent-s']");
             StringBuilder sb = new StringBuilder();
+            sb.Append("Погода в Минске :");
             foreach (var td in tds)
             {
                 sb.Append(td.SelectSingleNode(".//./div[@class='fcurrent-h']").InnerText + " ");

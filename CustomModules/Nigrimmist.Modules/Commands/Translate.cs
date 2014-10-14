@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 
 using HelloBotCommunication;
+using HelloBotModuleHelper;
 using Nigrimmist.Modules.Helpers;
 
 namespace Nigrimmist.Modules.Commands
@@ -12,7 +13,7 @@ namespace Nigrimmist.Modules.Commands
     {
         public List<string> CallCommandList { get { return new List<string>() { "t","translate"}; } }
         public string CommandDescription { get { return "Переводчик. Язык определяет автоматически, поддерживаются только русский/английский"; } }
-        private Random r = new Random();
+        
         public List<string> Images = new List<string>();
 
         public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
