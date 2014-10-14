@@ -22,7 +22,7 @@ namespace Test
 
             foreach (var v in s2)
             {
-                new WhatIsIt().HandleMessage(v, null, s =>
+                new Quote().HandleMessage(v, null, s =>
                     Console.WriteLine(s));
             }
             Console.ReadLine();

@@ -24,7 +24,8 @@ namespace Nigrimmist.Modules
                 new Map(),
                 new LangExecuter(),
                 new Advice(),
-                new OrModule()
+                new OrModule(),
+                new Quote()
             };
         }
     }

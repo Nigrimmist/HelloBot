@@ -57,6 +57,7 @@
     <Compile Include="Commands\Boobs.cs" />
     <Compile Include="Commands\Calculator.cs" />
     <Compile Include="Commands\Bash.cs" />
+    <Compile Include="Commands\Quote.cs" />
     <Compile Include="Commands\FuckingAdvice.cs" />
     <Compile Include="Commands\ItHappens.cs" />
     <Compile Include="Commands\LangExecuter.cs" />
