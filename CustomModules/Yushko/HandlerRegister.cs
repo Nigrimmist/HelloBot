@@ -13,7 +13,8 @@ namespace Yushko
                 new ExchangeRate(),
                 new Sorry(),
                 new Horoscope(),
-                new Moon()
+                new Moon(),
+                new Kstati()
             };
         }
     }

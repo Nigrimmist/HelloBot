@@ -46,7 +46,7 @@ namespace Yushko.Commands
             string url = "http://goroskop.open.by/pda/";
             StringBuilder result = new StringBuilder();
             string sign, term="today", category="ОБЩИЙ";
-            string help = "!гороскоп <знак зодиака> [общий/эротический/антигороскоп/бизнес/любовный/здоровье/кулинарный/мобильный] [сегодня/завтра/неделя/месяц/год]";
+            string help = "!гороскоп <знак зодиака> [общий/эротический/антигороскоп/бизнес/любовный/здоровья/кулинарный/мобильный] [сегодня/завтра/неделя/месяц/год]";
             if (arg.Length == 0)
             {
                 sendMessageFunc(help);
