@@ -74,7 +74,7 @@ namespace Nigrimmist.Modules.Commands
                             leftPart = leftPart.Substring(inputProvider.Length).Trim();
                         }
                         string url = string.Format(foundProvider, HttpUtility.UrlEncode(leftPart), HttpUtility.UrlEncode(rightPart));
-                        sendMessageFunc(PrepareUrl(url));
+                        sendMessageFunc(url.ToShortUrl());
                     }
                 }
                 else
@@ -91,21 +91,11 @@ namespace Nigrimmist.Modules.Commands
                         address = args.Substring(inputProvider.Length).Trim();    
                     }
                     string url = string.Format(foundProvider, HttpUtility.UrlEncode(address));
-                    sendMessageFunc(PrepareUrl(url));
+                    sendMessageFunc(url.ToShortUrl());
                 }
             }
         }
 
-        private string PrepareUrl(string url)
-        {
-            string shortenerPostUrl = "https://www.googleapis.com/urlshortener/v1/url";
-            string postData = string.Format(@"{{""longUrl"": ""{0}""}}", url);
-            HtmlReaderManager hrm = new HtmlReaderManager();
-            hrm.ContentType = "application/json";
-            hrm.Post(shortenerPostUrl, postData);
-
-            var response = JsonConvert.DeserializeObject<dynamic>(hrm.Html);
-            return response.id;
-        }
+        
     }
 }
