@@ -26,12 +26,7 @@ namespace Nigrimmist.Modules.Commands
 
         public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
         {
-            Uri url;
-            if (Uri.TryCreate(args, UriKind.Absolute, out url))
-            {
-                sendMessageFunc(args.ToShortUrl());
-            }
-
+            sendMessageFunc(args.ToShortUrl());
         }
     }
 }
