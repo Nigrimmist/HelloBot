@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HelloBotCommunication;
 using HtmlAgilityPack;
-using Nigrimmist.Modules.Helpers;
+using HelloBotModuleHelper;
 
 namespace Yushko.Commands
 {

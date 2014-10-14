@@ -30,7 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
+    <Reference Include="HelloBotModuleHelper">
+      <HintPath>..\Nigrimmist.Modules\bin\Debug\HelloBotModuleHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Dependencies\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -90,10 +94,6 @@
     <ProjectReference Include="..\..\HelloBotCommunication\HelloBotCommunication.csproj">
       <Project>{53eb844b-b3a7-4397-9db3-84f5d9f30840}</Project>
       <Name>HelloBotCommunication</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\HelloBotModuleHelper\HelloBotModuleHelper.csproj">
-      <Project>{5b94e739-fad8-4a23-ab11-3edd24f57d35}</Project>
-      <Name>HelloBotModuleHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
