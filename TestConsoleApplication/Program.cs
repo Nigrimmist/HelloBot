@@ -21,7 +21,7 @@ namespace Test
         {
 
             HelloBot bot = new HelloBot();
-            bot.HandleMessage("!сократи google.com", s =>
+            bot.HandleMessage("!Скажи риновский", s =>
             {
                 Console.WriteLine(s);
             },null);

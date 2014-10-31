@@ -92,7 +92,7 @@ namespace HelloBotCore
 
                         if (handler != null)
                         {
-                            string args = incomingMessage.Substring(incomingMessage.IndexOf(command, StringComparison.InvariantCulture) + command.Length).Trim();
+                            string args = incomingMessage.Substring(incomingMessage.IndexOf(command, StringComparison.InvariantCultureIgnoreCase) + command.Length).Trim();
 
                             IActionHandler hnd = handler;
                             var cts = new CancellationTokenSource(TimeSpan.FromSeconds(commandTimeoutSec));
