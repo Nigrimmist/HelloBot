@@ -10,7 +10,7 @@ HelloBot
 HelloBot is a small code-behind project that contains C# action modules integrated with any kind of client (Skype). One module = one action that will be called by command with output result in text format. Sound simple, right? You can write your own client using HelloBot core and our documentation behind.
 
 ###Live DEMO
-You can found "mensclubbot" skype name and test it right now! Send him a message "!say Hello, man!" and bot will answer you! For displaying full command list, send "!modules".
+You can find "mensclubbot" skype name and test it right now! Send him a message "!say Hello, man!" and bot will answer you! For displaying full command list, send "!modules".
 
 #Getting Started
 ####Adding modules and commands
