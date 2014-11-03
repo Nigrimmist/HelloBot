@@ -26,6 +26,7 @@ namespace SkypeBotAdapterConsole
                     skype.MessageStatus += OnMessageReceived;
                     
                     skype.Attach(5, true);
+                    
                     Console.WriteLine("skype attached");
                 }
                 catch (Exception ex)
@@ -56,7 +57,8 @@ namespace SkypeBotAdapterConsole
             if (status == TChatMessageStatus.cmsReceived)
             {
                 bot.HandleMessage(pMessage.Body, answer => SendMessage(answer,pMessage.Chat),
-                    new SkypeData(){FromName = pMessage.FromDisplayName});
+                    new SkypeData(pMessage));
+                
             }
         }
         

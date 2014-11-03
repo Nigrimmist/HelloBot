@@ -26,7 +26,8 @@ namespace Nigrimmist.Modules
                 new Advice(),
                 new OrModule(),
                 new Quote(),
-                new ShortLink()
+                new ShortLink(),
+                new SkypeChatSyncModule()
             };
         }
     }
