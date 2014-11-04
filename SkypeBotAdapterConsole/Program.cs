@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using HelloBotCore;
 using SKYPE4COMLib;
+using SkypeBotAdapterConsole.ChatSyncer;
 
 namespace SkypeBotAdapterConsole
 {
@@ -14,6 +15,9 @@ namespace SkypeBotAdapterConsole
     {
         private static Skype skype = new Skype();
         private static HelloBot bot;
+        private static SkypeChatSyncer chatSyncer;
+        private static IDictionary<string,IChat> chats { get; set; }
+        private static object _chatLocker = new object();
 
         static void Main(string[] args)
         {
@@ -24,9 +28,9 @@ namespace SkypeBotAdapterConsole
                 try
                 {
                     skype.MessageStatus += OnMessageReceived;
-                    
                     skype.Attach(5, true);
-                    
+                    chatSyncer = new SkypeChatSyncer();
+                    chatSyncer.OnSendMessageRequired += ChatSyncerOnOnSendMessageRequired;
                     Console.WriteLine("skype attached");
                 }
                 catch (Exception ex)
@@ -45,6 +49,39 @@ namespace SkypeBotAdapterConsole
             }
         }
 
+        private static void ChatSyncerOnOnSendMessageRequired(string message, string toSkypeId)
+        {
+            var chat = GetChatById(toSkypeId);
+            if (chat != null)
+            {
+                SendMessage(message,chat);
+            }
+        }
+
+        private static IChat GetChatById(string chatId)
+        {
+            if (chats == null)
+            {
+                lock (_chatLocker)
+                {
+                    if (chats == null)
+                    {
+                        chats = new Dictionary<string, IChat>();
+                        foreach (IChat chat in skype.Chats)
+                        {
+                            string tChatId = chat.Name.Split(';').Last();
+                            chats.Add(tChatId,chat);
+                        }
+                    }
+                }
+            }
+
+            IChat toReturn = null;
+            chats.TryGetValue(chatId, out toReturn);
+
+            return toReturn;
+        }
+
         static void BotOnErrorOccured(Exception ex)
         {
             Console.WriteLine(ex.ToString());
@@ -56,15 +93,16 @@ namespace SkypeBotAdapterConsole
  
             if (status == TChatMessageStatus.cmsReceived)
             {
-                bot.HandleMessage(pMessage.Body, answer => SendMessage(answer,pMessage.Chat),
-                    new SkypeData(pMessage));
-                
+                bot.HandleMessage(pMessage.Body, answer => SendMessage(answer,pMessage.Chat),new SkypeData(pMessage));
+
+                string fromChatId = pMessage.Chat.Name.Split(';').Last();
+                chatSyncer.HandleMessage(pMessage.Body,pMessage.FromDisplayName,fromChatId);
             }
         }
         
 
         public static object _lock = new object();
-        private static void SendMessage(string message, Chat toChat)
+        private static void SendMessage(string message, IChat toChat)
         {
             if (message.StartsWith("/"))
             {
