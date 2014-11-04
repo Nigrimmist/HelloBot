@@ -51,8 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatSyncer\ChatSyncerRelation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ChatSyncer\SkypeChatSyncer.cs" />
     <Compile Include="SkypeData.cs" />
   </ItemGroup>
   <ItemGroup>

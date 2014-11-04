@@ -14,7 +14,7 @@ namespace HelloBotCore
     {
         private  List<IActionHandler> handlers = new List<IActionHandler>();
         private IDictionary<string, Tuple<string, Func<string>>> systemCommands;
-        private string dllMask { get; set; }
+        private string moduleDllmask { get; set; }
         private string botCommandPrefix;
         private int commandTimeoutSec;
 
@@ -23,9 +23,9 @@ namespace HelloBotCore
         /// </summary>
         /// <param name="dllMask">File mask for retrieving client command dlls</param>
         /// <param name="botCommandPrefix">Prefix for bot commands. Only messages with that prefix will be handled</param>
-        public HelloBot(string dllMask = "*.dll", string botCommandPrefix = "!")
+        public HelloBot(string moduleDllmask = "*.dll", string botCommandPrefix = "!")
         {
-            this.dllMask = dllMask;
+            this.moduleDllmask = moduleDllmask;
             this.botCommandPrefix = botCommandPrefix;
             this.commandTimeoutSec = 60;
 
@@ -45,7 +45,7 @@ namespace HelloBotCore
         protected virtual List<IActionHandler> GetHandlers()
         {
             List<IActionHandler> toReturn = new List<IActionHandler>();
-            var dlls = Directory.GetFiles(".", dllMask);
+            var dlls = Directory.GetFiles(".", moduleDllmask);
             var i = typeof(IActionHandlerRegister);
             foreach (var dll in dlls)
             {
