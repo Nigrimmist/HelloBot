@@ -36,7 +36,7 @@ namespace SmartAssHandlerLib
             get { return "Лаконичный ответ на простой вопрос."; }
         }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             var answer = string.Empty;
 
@@ -58,7 +58,7 @@ namespace SmartAssHandlerLib
                 answer = _emptyAnswerProvider.Get(fromSkypeName);
             }
 
-            sendMessageFunc(answer);
+            sendMessageFunc(answer, AnswerBehaviourType.Text);
         }
 
         private class RandomHelper

@@ -78,7 +78,7 @@ namespace Yushko.Commands
 
         public string CommandDescription { get { return @"казнить нельзя помиловать"; } }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             string result = String.Empty;
             NameValueCollection headers = new NameValueCollection();
@@ -95,7 +95,7 @@ namespace Yushko.Commands
             }
             finally
             {
-                sendMessageFunc(result);
+                sendMessageFunc(result, AnswerBehaviourType.Text);
             }
         }
     }

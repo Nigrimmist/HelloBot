@@ -21,13 +21,13 @@ namespace SmartAssHandlerLib
             get { return string.Empty; }
         }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             var request = BuildRequestUrl(args);
             var rawData = GetRawData(request);
             var description = ParseMovieData(rawData);
 
-            sendMessageFunc(description.ToString());
+            sendMessageFunc(description.ToString(), AnswerBehaviourType.Text);
         }
 
         private MovieDescription ParseMovieData(string rawData)

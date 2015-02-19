@@ -15,7 +15,7 @@ namespace Nigrimmist.Modules.Commands
             get { return new List<string>() { "погода" }; }
         }
         public string CommandDescription { get { return @"Погода с тутбая для Минска. ""!погода"" = текущая+завтра"; } }
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string,AnswerBehaviourType> sendMessageFunc)
         {
             HtmlReaderManager hrm = new HtmlReaderManager();
             hrm.Get("http://pogoda.tut.by/");
@@ -32,7 +32,7 @@ namespace Nigrimmist.Modules.Commands
                 sb.Append(td.SelectSingleNode(".//./div[@class='fcurrent-descr']").InnerText + " ");
                 sb.Append(Environment.NewLine);
             }
-            sendMessageFunc(sb.ToString().Replace("&deg;", "°"));
+            sendMessageFunc(sb.ToString().Replace("&deg;", "°"), AnswerBehaviourType.Text);
         }
     }
 }

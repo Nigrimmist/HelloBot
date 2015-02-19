@@ -37,7 +37,7 @@ namespace Nigrimmist.Modules.Commands
             get { return new List<string>() { "Что такое", "Кто такой" }; }
         }
         public string CommandDescription { get { return @"Бот знает всё. Ну или почти всё."; } }
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             args = args.Replace("?"," ").Trim();
             string answer = string.Empty;
@@ -78,7 +78,7 @@ namespace Nigrimmist.Modules.Commands
                 answer += ". " + hrm.ResponseUri;
             }
 
-            sendMessageFunc(answer);
+            sendMessageFunc(answer, AnswerBehaviourType.Text);
         }
     }
 }

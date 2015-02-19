@@ -17,11 +17,11 @@ namespace Nigrimmist.Modules.Commands
         public List<string> CallCommandList { get { return new List<string>() { "execute" }; } }
         public string CommandDescription { get { return "Выполняет код на C#. Добавьте help для вызова справки."; } }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             if (args.StartsWith("help"))
             {
-                sendMessageFunc(GetHelpText());
+                sendMessageFunc(GetHelpText(),AnswerBehaviourType.Text);
             }
             else
             {
@@ -59,7 +59,7 @@ namespace Rextester
                 if (!string.IsNullOrEmpty(toReturn))
                 {
                     toReturn = toReturn.Replace(Environment.NewLine," ").Trim();
-                    sendMessageFunc(toReturn.Length > 200 ? toReturn.Substring(0,50) + "..." : toReturn);
+                    sendMessageFunc(toReturn.Length > 200 ? toReturn.Substring(0, 50) + "..." : toReturn, AnswerBehaviourType.Text);
                 }
                 
                 

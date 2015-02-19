@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using HelloBotCommunication;
 using HelloBotCore;
 using SKYPE4COMLib;
 using SkypeBotAdapterConsole.ChatSyncer;
@@ -93,7 +94,7 @@ namespace SkypeBotAdapterConsole
  
             if (status == TChatMessageStatus.cmsReceived)
             {
-                bot.HandleMessage(pMessage.Body, answer => SendMessage(answer,pMessage.Chat),new SkypeData(pMessage));
+                bot.HandleMessage(pMessage.Body, (answer, answerType) => SendMessage(answer, pMessage.Chat),new SkypeData(pMessage));
 
                 string fromChatId = pMessage.Chat.Name.Split(';').Last();
                 chatSyncer.HandleMessage(pMessage.Body,pMessage.FromDisplayName,fromChatId);

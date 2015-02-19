@@ -29,7 +29,7 @@ namespace Nigrimmist.Modules.Commands
             "Эники бэники... {0}!"
         };
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             var variants = Regex.Split(args, "или", RegexOptions.IgnoreCase);
             string answer = "А что, есть выбор?";
@@ -39,7 +39,7 @@ namespace Nigrimmist.Modules.Commands
             }
             if (r.Next(1, 101) < ChanceOfSpecialAnswer)
                 answer = string.Format(cusstomMessages[r.Next(0, cusstomMessages.Count)], answer);
-            sendMessageFunc(answer);
+            sendMessageFunc(answer, AnswerBehaviourType.Text);
         }
 
 

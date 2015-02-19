@@ -24,7 +24,7 @@ namespace Nigrimmist.Modules.Commands
         }
         public string CommandDescription { get { return @"Случайная цитата"; } }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
 
             HtmlReaderManager hrm = new HtmlReaderManager();
@@ -33,7 +33,7 @@ namespace Nigrimmist.Modules.Commands
             var answerParts = hrm.Html.Split(new string[]{"##"},StringSplitOptions.RemoveEmptyEntries);
             string quote = answerParts[0];
             string author = answerParts[1];
-            sendMessageFunc(string.Format("{0} ©{1}", quote, author));
+            sendMessageFunc(string.Format("{0} ©{1}", quote, author), AnswerBehaviourType.Text);
         }
     }
 }

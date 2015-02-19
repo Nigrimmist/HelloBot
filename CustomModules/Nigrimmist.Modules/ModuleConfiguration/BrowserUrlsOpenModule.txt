@@ -1,0 +1,6 @@
+﻿g;https://www.google.by/search?q={0}
+кино;http://www.kinopoisk.ru/index.php?first=true&what=&kp_query={0}
+onliner;http://onliner.by
+you;https://www.youtube.com/results?search_query={0}
+rutor;http://rutor.org/search/{0}
+so;http://stackoverflow.com/search?q={0}

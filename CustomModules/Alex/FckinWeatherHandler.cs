@@ -21,7 +21,7 @@ namespace SmartAssHandlerLib
         public List<string> CallCommandList { get { return new List<string>() {"weather"}; }  }
         public string CommandDescription { get { return "Shows fucking WEATHER!"; } }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             var result = FailedResult;
 
@@ -35,7 +35,7 @@ namespace SmartAssHandlerLib
             }
             catch (Exception ex) { }
 
-            sendMessageFunc(result);
+            sendMessageFunc(result, AnswerBehaviourType.Text);
         }
 
         private Forecast ParseForecast(string rawWeatherHtml)

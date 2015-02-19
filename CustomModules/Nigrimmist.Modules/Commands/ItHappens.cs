@@ -21,7 +21,7 @@ namespace Nigrimmist.Modules.Commands
             get { return new List<string>() { "ithap" }; }
         }
         public string CommandDescription { get { return @"Случайная IT история с ithappens.me"; } }
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             if (!Jokes.Any())
             {
@@ -41,7 +41,7 @@ namespace Nigrimmist.Modules.Commands
             int rPos = r.Next(0, Jokes.Count );
             string joke = Jokes[rPos];
             Jokes.RemoveAt(rPos);
-            sendMessageFunc(joke);
+            sendMessageFunc(joke, AnswerBehaviourType.Text);
         }
     }
 }

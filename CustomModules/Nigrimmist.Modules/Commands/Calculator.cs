@@ -13,7 +13,7 @@ namespace Nigrimmist.Modules.Commands
         public List<string> CallCommandList { get { return new List<string>() { "calc" }; } }
         public string CommandDescription { get { return "Умный калькулятор. Реализация NCalc библиотеки"; }  }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             Expression expr = new Expression(args);
             var exprAnswer = expr.Evaluate();
@@ -36,7 +36,7 @@ namespace Nigrimmist.Modules.Commands
                 answer = string.Format("Ответ равен : {0}", exprAnswer);
             }
 
-            sendMessageFunc(answer);
+            sendMessageFunc(answer, AnswerBehaviourType.Text);
             
         }
     }

@@ -21,10 +21,10 @@ namespace Test
         {
 
             HelloBot bot = new HelloBot();
-            bot.HandleMessage("!Скажи риновский", s =>
-            {
-                Console.WriteLine(s);
-            },null);
+            //bot.HandleMessage("!Скажи риновский", s =>
+            //{
+            //    Console.WriteLine(s);
+            //},null);
             
 
             //List<string> s2 = new List<string>() { "Сиськи" };

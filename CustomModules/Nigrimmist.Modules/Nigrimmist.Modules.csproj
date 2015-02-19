@@ -72,6 +72,7 @@
     <Compile Include="Commands\Say.cs" />
     <Compile Include="Commands\Translate.cs" />
     <Compile Include="Commands\Weather.cs" />
+    <Compile Include="WindowsCommands\BrowserUrlsOpenModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\HelloBotCommunication\HelloBotCommunication.csproj">
@@ -82,6 +83,11 @@
       <Project>{5b94e739-fad8-4a23-ab11-3edd24f57d35}</Project>
       <Name>HelloBotModuleHelper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModuleConfiguration\BrowserUrlsOpenModule.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

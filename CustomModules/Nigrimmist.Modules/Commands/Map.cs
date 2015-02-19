@@ -44,7 +44,7 @@ namespace Nigrimmist.Modules.Commands
         private string helpMsg = string.Format(@"""!map <опционально:поисковик> <адрес>"", где поисковик может быть y(yandex) или g(google).
 Проложить маршрут : ""!map <опционально:поисковик> <из>{0}<в>""", fromToDelimeter);
 
-       public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
        {
            
 
@@ -54,7 +54,7 @@ namespace Nigrimmist.Modules.Commands
 
                 if (inputProvider == "help")
                 {
-                    sendMessageFunc(helpMsg);
+                    sendMessageFunc(helpMsg, AnswerBehaviourType.Text);
                 }
                 else if (args.Contains(fromToDelimeter))
                 {
@@ -74,7 +74,7 @@ namespace Nigrimmist.Modules.Commands
                             leftPart = leftPart.Substring(inputProvider.Length).Trim();
                         }
                         string url = string.Format(foundProvider, HttpUtility.UrlEncode(leftPart), HttpUtility.UrlEncode(rightPart));
-                        sendMessageFunc(url.ToShortUrl());
+                        sendMessageFunc(url.ToShortUrl(), AnswerBehaviourType.Link);
                     }
                 }
                 else
@@ -91,7 +91,7 @@ namespace Nigrimmist.Modules.Commands
                         address = args.Substring(inputProvider.Length).Trim();    
                     }
                     string url = string.Format(foundProvider, HttpUtility.UrlEncode(address));
-                    sendMessageFunc(url.ToShortUrl());
+                    sendMessageFunc(url.ToShortUrl(), AnswerBehaviourType.Link);
                 }
             }
         }

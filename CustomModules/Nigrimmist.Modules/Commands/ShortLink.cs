@@ -22,11 +22,11 @@ namespace Nigrimmist.Modules.Commands
         {
             get { return new List<string>() { "сократи"}; }
         }
-        public string CommandDescription { get { return @"Случайная цитата"; } }
+        public string CommandDescription { get { return @"Сокращалка ссылок"; } }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
-            sendMessageFunc(args.ToShortUrl());
+            sendMessageFunc(args.ToShortUrl(), AnswerBehaviourType.Link);
         }
     }
 }

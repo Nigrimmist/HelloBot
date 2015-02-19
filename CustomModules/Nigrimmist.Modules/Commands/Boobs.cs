@@ -15,9 +15,9 @@ namespace Nigrimmist.Modules.Commands
         public List<string> CallCommandList { get { return new List<string>() { "сиськи","boobs","с" }; } }
         public string CommandDescription { get { return "Ну а что тут объяснять. Сиськи."; } }
         private Random r = new Random();
-        public List<string> Images = new List<string>(); 
+        public List<string> Images = new List<string>();
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             if (!Images.Any())
             {
@@ -36,7 +36,7 @@ namespace Nigrimmist.Modules.Commands
             int rPos = r.Next(0, Images.Count);
             string url = Images[rPos];
             Images.RemoveAt(rPos);
-            sendMessageFunc("Только тссс... никому. Ок? "+url);
+            sendMessageFunc(url, AnswerBehaviourType.Link);
         }
 
 

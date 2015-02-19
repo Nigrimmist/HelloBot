@@ -23,11 +23,11 @@ namespace SmartAssHandlerLib
             get { return "Безумная заумь небольшими дозами. Добавьте слово \"напалмом\" к команде, чтобы получить порцию зауми побольше. "; }
         }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             var needLotsOfStuff = !string.IsNullOrEmpty(args) && args.Contains("напалмом");
 
-            sendMessageFunc(RetrieveSmartAssStuff(needLotsOfStuff));
+            sendMessageFunc(RetrieveSmartAssStuff(needLotsOfStuff), AnswerBehaviourType.Text);
         }
 
         private string RetrieveSmartAssStuff(bool needLotsOfStuff)

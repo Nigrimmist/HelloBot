@@ -72,7 +72,7 @@ namespace Yushko.Commands
             return _exRatesDaily;
         }
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             string[] arg = args.Split(' ');
             string result = "";
@@ -104,7 +104,7 @@ namespace Yushko.Commands
                     break;
             }
 
-            sendMessageFunc(result);
+            sendMessageFunc(result,AnswerBehaviourType.Text);
         }
 
         //сконвертировать из одной валюты в другую

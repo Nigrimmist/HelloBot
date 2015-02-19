@@ -19,9 +19,10 @@ namespace HelloBotCommunication
         /// <summary>
         /// Event will be fired for your Command
         /// </summary>
+        /// <param name="command">Using command</param>
         /// <param name="args">Command arguments, can be empty</param>
         /// <param name="clientData"></param>
         /// <param name="sendMessageFunc">Call it when your answer will be ready.</param>
-        void HandleMessage(string args, object clientData, Action<string> sendMessageFunc);
+        void HandleMessage(string command,string args, object clientData, Action<string,AnswerBehaviourType> sendMessageFunc);
     }
 }

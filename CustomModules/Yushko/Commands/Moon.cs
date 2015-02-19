@@ -17,7 +17,7 @@ namespace Yushko.Commands
         public string CommandDescription { get { return @"лунный календарь"; } }
 
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             StringBuilder result = new StringBuilder();
             HtmlReaderManager hrm = new HtmlReaderManager();
@@ -37,7 +37,7 @@ namespace Yushko.Commands
                     result.Append(tds[1].InnerText);//.InnerHtml.Replace("<br>", Environment.NewLine).RemoveAllTags().Trim();
                 }
             }
-            sendMessageFunc(result.ToString());
+            sendMessageFunc(result.ToString(), AnswerBehaviourType.Text);
         }
     }
 }

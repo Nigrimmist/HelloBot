@@ -16,7 +16,7 @@ namespace Yushko.Commands
         public string CommandDescription { get { return @"Интересный факт одной строкой"; } }
 
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             string url = "http://know-that.ru/randomizer.php";
             string result = string.Empty;
@@ -43,7 +43,7 @@ namespace Yushko.Commands
             else {
                 result = "Факты кончились... :(";
             }
-            sendMessageFunc(result);
+            sendMessageFunc(result,AnswerBehaviourType.Text);
         }
     }
 }

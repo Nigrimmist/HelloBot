@@ -16,7 +16,7 @@ namespace Nigrimmist.Modules.Commands
         
         public List<string> Images = new List<string>();
 
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             
             HtmlReaderManager hrm = new HtmlReaderManager();
@@ -29,7 +29,7 @@ namespace Nigrimmist.Modules.Commands
             hrm.Get(string.Format("https://translate.google.ru/translate_a/single?client=t&sl={0}&tl={1}&hl=ru&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=1&otf=2&ssel=0&tsel=0&q=", fromLang, toLang) + HttpUtility.UrlEncode(args));
             string html = hrm.Html;
             string anwser = html.Substring(4, html.IndexOf(@""",""") - 4);
-            sendMessageFunc(anwser);
+            sendMessageFunc(anwser, AnswerBehaviourType.Text);
         }
 
        

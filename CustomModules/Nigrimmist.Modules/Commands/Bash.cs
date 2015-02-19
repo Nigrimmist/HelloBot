@@ -19,7 +19,7 @@ namespace Nigrimmist.Modules.Commands
         public List<string> CallCommandList{get { return new List<string>(){"баш","bash"}; }
         }
         public string CommandDescription { get { return @"Случайная цитата с башорга"; } }
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             if (!Jokes.Any())
             {
@@ -39,7 +39,7 @@ namespace Nigrimmist.Modules.Commands
             int rPos = r.Next(0, Jokes.Count );
             string joke = Jokes[rPos];
             Jokes.RemoveAt(rPos);
-            sendMessageFunc(joke);
+            sendMessageFunc(joke, AnswerBehaviourType.Text);
         }
     }
 }

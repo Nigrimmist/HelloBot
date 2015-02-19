@@ -16,12 +16,12 @@ namespace Nigrimmist.Modules.Commands
     {
         public List<string> CallCommandList{get { return new List<string>(){"get id"}; }}
         public string CommandDescription { get { return @"Возвращает id чата."; } }
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
             var skypeData = clientData as ISkypeData;
             if (skypeData != null)
             {
-                sendMessageFunc(skypeData.ChatId);
+                sendMessageFunc(skypeData.ChatId, AnswerBehaviourType.Text);
             }
         }
     }

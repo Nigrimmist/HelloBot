@@ -15,9 +15,9 @@ namespace Nigrimmist.Modules.Commands
             get { return new List<string>() { "скажи", "say" }; }
         }
         public string CommandDescription { get { return @"Говорит что прикажете"; } }
-        public void HandleMessage(string args, object clientData, Action<string> sendMessageFunc)
+        public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
-            sendMessageFunc(args);
+            sendMessageFunc(args,AnswerBehaviourType.Text);
         }
     }
 }

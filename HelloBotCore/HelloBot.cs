@@ -71,7 +71,7 @@ namespace HelloBotCore
             return toReturn;
         }
 
-        public void HandleMessage(string incomingMessage, Action<string> answerCallback, object data)
+        public void HandleMessage(string incomingMessage, Action<string,AnswerBehaviourType> answerCallback, object data)
         {
             if (incomingMessage.Contains(botCommandPrefix))
             {
@@ -83,7 +83,7 @@ namespace HelloBotCore
                     if (systemCommandList.Any())
                     {
                         var systemComand = systemCommandList.First();
-                        answerCallback(systemComand.Value.Item2());
+                        answerCallback(systemComand.Value.Item2(), AnswerBehaviourType.Text);
                     }
                     else
                     {
@@ -104,7 +104,7 @@ namespace HelloBotCore
                                 {
                                     try
                                     {
-                                        hnd.HandleMessage(args, data, answerCallback);
+                                        hnd.HandleMessage(command,args, data, answerCallback);
                                     }
                                     catch (Exception ex)
                                     {
@@ -112,7 +112,7 @@ namespace HelloBotCore
                                         {
                                             OnErrorOccured(ex);
                                         }
-                                        answerCallback(command + " пал смертью храбрых :(");
+                                        answerCallback(command + " пал смертью храбрых :(",AnswerBehaviourType.Text);
                                     }
                                 }
 
@@ -160,9 +160,18 @@ namespace HelloBotCore
 
         private string GetSystemCommands()
         {
-            return String.Join(Environment.NewLine, systemCommands.Select(x => String.Format("!{0} - {1}", x.Key, x.Value.Item1)).ToList());
+            return String.Join(Environment.NewLine, systemCommands.Select(x => String.Format(botCommandPrefix+"{0} - {1}", x.Key, x.Value.Item1)).ToList());
         }
 
+        public List<string> GetUserDefinedCommandList()
+        {
+            List<string> toReturn = new List<string>();
+            foreach (var commandList in handlers.Select(x=>x.CallCommandList))
+            {
+                toReturn.AddRange(commandList);
+            }
+            return toReturn;
+        }
         private string GetUserDefinedCommands()
         {
             StringBuilder sb = new StringBuilder();
