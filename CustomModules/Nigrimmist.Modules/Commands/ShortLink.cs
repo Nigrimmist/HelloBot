@@ -18,15 +18,24 @@ namespace Nigrimmist.Modules.Commands
     /// </summary>
     public class ShortLink : IActionHandler
     {
-        public List<string> CallCommandList
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "сократи"}; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("сократи" ),
+                };
+            }
         }
+
+       
         public string CommandDescription { get { return @"Сокращалка ссылок"; } }
 
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
-            sendMessageFunc(args.ToShortUrl(), AnswerBehaviourType.Link);
+            string answer = args.ToShortUrl();
+            sendMessageFunc(answer, AnswerBehaviourType.Text);
         }
     }
 }

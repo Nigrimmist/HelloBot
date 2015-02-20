@@ -26,11 +26,18 @@ namespace SmartAssHandlerLib
             _emptyAnswerProvider = new EmptyAnswerProvider(_decisionMaker);
         }
 
-        public List<string> CallCommandList
+        
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "бот", "бот," }; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("бот" ),
+                    new CallCommandInfo("бот,")
+                };
+            }
         }
-
         public string CommandDescription
         {
             get { return "Лаконичный ответ на простой вопрос."; }

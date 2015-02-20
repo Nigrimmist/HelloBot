@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnswerBehaviourType.cs" />
+    <Compile Include="CallCommandInfo.cs" />
     <Compile Include="ClientDataInterfaces\ISkypeData.cs" />
     <Compile Include="IActionHandlerRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

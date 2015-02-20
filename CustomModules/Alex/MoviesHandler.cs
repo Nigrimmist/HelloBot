@@ -11,9 +11,15 @@ namespace SmartAssHandlerLib
 {
     public class MoviesHandler : IActionHandler
     {
-        public List<string> CallCommandList
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "кино" }; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("кино" )
+                };
+            }
         }
 
         public string CommandDescription

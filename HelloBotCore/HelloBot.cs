@@ -112,7 +112,7 @@ namespace HelloBotCore
                                         {
                                             OnErrorOccured(ex);
                                         }
-                                        answerCallback(command + " пал смертью храбрых :(",AnswerBehaviourType.Text);
+                                        answerCallback(command + " сломан :(",AnswerBehaviourType.Text);
                                     }
                                 }
 
@@ -136,11 +136,11 @@ namespace HelloBotCore
             {
                 foreach (var com in actionHandler.CallCommandList)
                 {
-                    if (phrase.StartsWith(com, StringComparison.OrdinalIgnoreCase))
+                    if (phrase.StartsWith(com.Command, StringComparison.OrdinalIgnoreCase))
                     {
-                        var args = phrase.Substring(com.Length);
+                        var args = phrase.Substring(com.Command.Length);
                         if (string.IsNullOrEmpty(args) || args.StartsWith(" "))
-                        foundCommands.Add(com);
+                        foundCommands.Add(com.Command);
                     }
                 }
             }
@@ -148,7 +148,7 @@ namespace HelloBotCore
             if (foundCommands.Any())
             {
                 string foundCommand = foundCommands.OrderByDescending(x => x).First();
-                toReturn = handlers.FirstOrDefault(x => x.CallCommandList.Contains(foundCommand,StringComparer.OrdinalIgnoreCase));
+                toReturn = handlers.FirstOrDefault(x => x.CallCommandList.Select(y=>y.Command).Contains(foundCommand,StringComparer.OrdinalIgnoreCase));
                 if (toReturn != null)
                 {
                     command = foundCommand;
@@ -168,7 +168,7 @@ namespace HelloBotCore
             List<string> toReturn = new List<string>();
             foreach (var commandList in handlers.Select(x=>x.CallCommandList))
             {
-                toReturn.AddRange(commandList);
+                toReturn.AddRange(commandList.Select(x=>x.Command));
             }
             return toReturn;
         }

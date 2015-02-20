@@ -15,11 +15,19 @@ namespace Nigrimmist.Modules.Commands
 {
     public class Map : IActionHandler
     {
-        public List<string> CallCommandList
+        
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() {"карта", "map"}; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    
+                    new CallCommandInfo("карта" ),
+                    new CallCommandInfo("map" )
+                };
+            }
         }
-
         public string CommandDescription
         {
             get { return @"Генерирует ссылку на карту по адресу. Добавьте help для просмотра справки."; }

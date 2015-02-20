@@ -8,7 +8,7 @@ namespace HelloBotCommunication
         /// <summary>
         /// Call command list.
         /// </summary>
-        List <string> CallCommandList { get;}
+        List<CallCommandInfo> CallCommandList { get; }
 
         /// <summary>
         /// Will be displayed in !modules list

@@ -10,10 +10,20 @@ namespace Nigrimmist.Modules.Commands
         private Random r = new Random();
         
 
-        public List<string> CallCommandList
+        
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "скажи", "say" }; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("скажи" ),
+                    new CallCommandInfo("say" )
+                };
+            }
         }
+
+
         public string CommandDescription { get { return @"Говорит что прикажете"; } }
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {

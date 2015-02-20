@@ -11,6 +11,7 @@
     <AssemblyName>HelloDesktopAssistant</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,8 +32,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Dependencies\Newtonsoft for 2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,21 +50,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HotKeyRegister.cs" />
-    <Compile Include="KeyboardHook.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Entities\ApplicationConfiguration.cs" />
+    <Compile Include="Entities\HotKeyType.cs" />
+    <Compile Include="Forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HotKeyRegister.cs" />
+    <Compile Include="KeyboardHook.cs" />
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -67,6 +85,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="conf.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -81,9 +102,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomModules\Alex\VariousHandlersLib.csproj">
+      <Project>{111cf492-6831-47cb-8297-b22c9a752cb5}</Project>
+      <Name>VariousHandlersLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomModules\Nigrimmist.Modules\Nigrimmist.Modules.csproj">
       <Project>{27daddf0-f3cb-4e65-9c8c-8eb3c3e4edad}</Project>
       <Name>Nigrimmist.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomModules\Yushko\Yushko.csproj">
+      <Project>{4b061c6f-c37e-457d-829a-0cd545b36923}</Project>
+      <Name>Yushko</Name>
     </ProjectReference>
     <ProjectReference Include="..\HelloBotCommunication\HelloBotCommunication.csproj">
       <Project>{53eb844b-b3a7-4397-9db3-84f5d9f30840}</Project>
@@ -103,6 +132,7 @@
     <Content Include="..\CustomModules\Nigrimmist.Modules\ModuleConfiguration\BrowserUrlsOpenModule.txt">
       <Link>ModuleConfiguration\BrowserUrlsOpenModule.txt</Link>
     </Content>
+    <None Include="Resources\settings49.png" />
     <None Include="Resources\opened33.png" />
     <None Include="Resources\chimp.png" />
   </ItemGroup>

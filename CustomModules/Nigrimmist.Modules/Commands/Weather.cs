@@ -11,8 +11,15 @@ namespace Nigrimmist.Modules.Commands
 {
     public class Weather : IActionHandler
     {
-        public List<string> CallCommandList {
-            get { return new List<string>() { "погода" }; }
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("погода")
+                };
+            }
         }
         public string CommandDescription { get { return @"Погода с тутбая для Минска. ""!погода"" = текущая+завтра"; } }
         public void HandleMessage(string command, string args, object clientData, Action<string,AnswerBehaviourType> sendMessageFunc)

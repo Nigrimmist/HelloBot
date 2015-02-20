@@ -31,10 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.txtCommandSearchField = new System.Windows.Forms.TextBox();
-            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tsExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,36 +52,42 @@
             this.txtCommandSearchField.TabIndex = 0;
             this.txtCommandSearchField.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCommandSearchField_KeyDown);
             // 
-            // trayIcon
-            // 
-            this.trayIcon.ContextMenuStrip = this.trayMenu;
-            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
-            this.trayIcon.Text = "notifyIcon1";
-            this.trayIcon.Visible = true;
-            // 
             // trayMenu
             // 
             this.trayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsSettings,
             this.tsExit});
             this.trayMenu.Name = "trayMenu";
-            this.trayMenu.Size = new System.Drawing.Size(153, 48);
+            this.trayMenu.Size = new System.Drawing.Size(135, 48);
+            // 
+            // tsExit
+            // 
+            this.tsExit.Name = "tsExit";
+            this.tsExit.Size = new System.Drawing.Size(134, 22);
+            this.tsExit.Text = "Выход";
+            this.tsExit.Click += new System.EventHandler(this.tsExit_Click);
+            // 
+            // tsSettings
+            // 
+            this.tsSettings.Name = "tsSettings";
+            this.tsSettings.Size = new System.Drawing.Size(134, 22);
+            this.tsSettings.Text = "Настройки";
+            this.tsSettings.Click += new System.EventHandler(this.tsSettings_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::HelloDesktopAssistant.Properties.Resources.chimp;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 26);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // tsExit
+            // trayIcon
             // 
-            this.tsExit.Image = global::HelloDesktopAssistant.Properties.Resources.opened33;
-            this.tsExit.Name = "tsExit";
-            this.tsExit.Size = new System.Drawing.Size(152, 22);
-            this.tsExit.Text = "Выход";
-            this.tsExit.Click += new System.EventHandler(this.tsExit_Click);
+            this.trayIcon.ContextMenuStrip = this.trayMenu;
+            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
+            this.trayIcon.Text = "MonkeyJob Tool";
+            this.trayIcon.Visible = true;
             // 
             // MainForm
             // 
@@ -105,10 +112,11 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtCommandSearchField;
-        private System.Windows.Forms.NotifyIcon trayIcon;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ContextMenuStrip trayMenu;
         private System.Windows.Forms.ToolStripMenuItem tsExit;
+        private System.Windows.Forms.ToolStripMenuItem tsSettings;
+        private System.Windows.Forms.NotifyIcon trayIcon;
     }
 }
 

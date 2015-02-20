@@ -11,7 +11,19 @@ namespace Nigrimmist.Modules.Commands
 {
     public class Translate : IActionHandler
     {
-        public List<string> CallCommandList { get { return new List<string>() { "t","translate"}; } }
+        
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("t" ),
+                    new CallCommandInfo("translate")
+                };
+            }
+        }
+
         public string CommandDescription { get { return "Переводчик. Язык определяет автоматически, поддерживаются только русский/английский"; } }
         
         public List<string> Images = new List<string>();

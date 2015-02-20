@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace HelloDesktopAssistant
@@ -39,7 +39,7 @@ namespace HelloDesktopAssistant
     public enum ModifierHookKeys : uint
     {
         Alt = 1,
-        Control = 2,
+        CTRL = 2,
         Shift = 4,
         Win = 8
     }

@@ -16,10 +16,19 @@ namespace Nigrimmist.Modules.Commands
         public List<string> Jokes = new List<string>();
         private Random r = new Random();
 
-        public List<string> CallCommandList
+       
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "ithap" }; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    
+                    new CallCommandInfo("ithap" )
+                };
+            }
         }
+
         public string CommandDescription { get { return @"Случайная IT история с ithappens.me"; } }
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {

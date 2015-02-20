@@ -13,7 +13,10 @@ namespace Nigrimmist.Modules.WindowsCommands
     public class BrowserUrlsOpenModule: IActionHandler
     {
 
-        public List<string> CallCommandList { get { return new List<string>(){"open"}; }}
+        //public List<CallCommandInfo> CallCommandList { get;/*{ return new List<string>(){"open"}; }*/ private set; }
+
+        public List<CallCommandInfo> CallCommandList{get; private set;}
+
         public string CommandDescription { get { return "Открывает ссылку в браузере"; } }
         private IDictionary<string, string> _commandUrlDictionary = new Dictionary<string, string>();
         public BrowserUrlsOpenModule()
@@ -28,19 +31,18 @@ namespace Nigrimmist.Modules.WindowsCommands
                     _commandUrlDictionary.Add(keyValue);
                 }
 
-                //CallCommandList = _commandUrlDictionary.Select(x => x.Key).ToList();
+                CallCommandList = _commandUrlDictionary.Select(x => new CallCommandInfo(x.Key)).ToList();
             }
         }
 
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {
-            if (!string.IsNullOrEmpty(args) && args.Contains(" "))
-            {
-                string subCommand = args.Split(' ').First();
-                args = args.Substring(subCommand.Length).TrimStart();
-                if (_commandUrlDictionary.ContainsKey(subCommand))
+            
+               // string subCommand = args.Split(' ').First();
+                //args = args.Substring(subCommand.Length).TrimStart();
+                if (_commandUrlDictionary.ContainsKey(command))
                 {
-                    var url = _commandUrlDictionary[subCommand];
+                    var url = _commandUrlDictionary[command];
                     if (string.IsNullOrEmpty(args.Trim()))
                     {
                         Uri uri;
@@ -51,7 +53,7 @@ namespace Nigrimmist.Modules.WindowsCommands
                     }
                     sendMessageFunc(string.Format(url, args), AnswerBehaviourType.Link);
                 }
-            }
+            
         }
     }
 }

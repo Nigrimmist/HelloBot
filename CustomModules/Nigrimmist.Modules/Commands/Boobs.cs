@@ -12,7 +12,20 @@ namespace Nigrimmist.Modules.Commands
 {
     public class Boobs : IActionHandler
     {
-        public List<string> CallCommandList { get { return new List<string>() { "сиськи","boobs","с" }; } }
+        
+
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("сиськи"),
+                    new CallCommandInfo("boobs")
+                };
+            }
+        }
+
         public string CommandDescription { get { return "Ну а что тут объяснять. Сиськи."; } }
         private Random r = new Random();
         public List<string> Images = new List<string>();

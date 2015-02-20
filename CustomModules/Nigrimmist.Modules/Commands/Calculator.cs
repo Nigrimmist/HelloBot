@@ -9,8 +9,18 @@ namespace Nigrimmist.Modules.Commands
 {
     public class Calculator : IActionHandler
     {
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("calc"),
+                    new CallCommandInfo("калькулятор")
+                };
+            }
+        }
 
-        public List<string> CallCommandList { get { return new List<string>() { "calc" }; } }
         public string CommandDescription { get { return "Умный калькулятор. Реализация NCalc библиотеки"; }  }
 
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)

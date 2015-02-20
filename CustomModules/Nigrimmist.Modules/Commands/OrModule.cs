@@ -12,7 +12,17 @@ namespace Nigrimmist.Modules.Commands
 {
     public class OrModule : IActionHandler
     {
-        public List<string> CallCommandList { get { return new List<string>() { "Выбери" }; } }
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("Выбери" )
+                };
+            }
+        }
+
         public string CommandDescription { get { return @"Выбирает между чем-то. Использует ""Или"""; } }
         private Random r = new Random();
         private const int ChanceOfSpecialAnswer = 30;

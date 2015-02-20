@@ -13,9 +13,16 @@ namespace SmartAssHandlerLib
         private const string Query =
             "http://referats.yandex.ru/referats/write/?t=astronomy+geology+gyroscope+literature+marketing+mathematics+music+polit+agrobiologia+law+psychology+geography+physics+philosophy+chemistry+estetica";
 
-        public List<string> CallCommandList
+        
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "жги" }; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("жги" ),
+                };
+            }
         }
 
         public string CommandDescription

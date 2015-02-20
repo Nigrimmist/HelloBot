@@ -18,10 +18,18 @@ namespace Nigrimmist.Modules.Commands
     /// </summary>
     public class Quote : IActionHandler
     {
-        public List<string> CallCommandList
+        
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "сумничай","цитата","цитату запили" }; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("цитата" )
+                };
+            }
         }
+
         public string CommandDescription { get { return @"Случайная цитата"; } }
 
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)

@@ -32,10 +32,19 @@ namespace Nigrimmist.Modules.Commands
             "Это... это ... ээээ.... Сосиска! Да, точно. Это сосиска."
         };
 
-        public List<string> CallCommandList
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "Что такое", "Кто такой" }; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("Что такое" ),
+                    new CallCommandInfo("Кто такой")
+                };
+            }
         }
+
+       
         public string CommandDescription { get { return @"Бот знает всё. Ну или почти всё."; } }
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {

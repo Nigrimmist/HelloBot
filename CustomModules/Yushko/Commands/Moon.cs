@@ -10,10 +10,19 @@ namespace Yushko.Commands
 {
     public class Moon : IActionHandler
     {
-        public List<string> CallCommandList {
-            get { return new List<string>() { "луна", "moon"}; }
+       
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    
+                    new CallCommandInfo("луна" ),
+                    new CallCommandInfo("moon" )
+                };
+            }
         }
-
         public string CommandDescription { get { return @"лунный календарь"; } }
 
 

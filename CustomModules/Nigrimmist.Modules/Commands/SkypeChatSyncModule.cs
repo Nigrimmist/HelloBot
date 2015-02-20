@@ -14,7 +14,19 @@ namespace Nigrimmist.Modules.Commands
 {
     public class SkypeChatSyncModule : IActionHandler
     {
-        public List<string> CallCommandList{get { return new List<string>(){"get id"}; }}
+        
+
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("get id" ),
+                };
+            }
+        }
+
         public string CommandDescription { get { return @"Возвращает id чата."; } }
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)
         {

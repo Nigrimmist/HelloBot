@@ -30,8 +30,16 @@ namespace Yushko.Commands
 
     public class Sorry : IActionHandler
     {
-        public List<string> CallCommandList {
-            get { return new List<string>() { "простите", "sorry" }; }
+       
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("простите" ),
+                };
+            }
         }
         
         private string NextSlug = String.Empty;

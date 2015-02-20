@@ -12,9 +12,18 @@ namespace Yushko.Commands
 {
     class ExchangeRate : IActionHandler
     {
-        public List<string> CallCommandList
+       
+
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "курс", "exrate" }; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("курс"),
+                    new CallCommandInfo("exrate" )
+                };
+            }
         }
 
         public string CommandDescription

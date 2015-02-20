@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -60,7 +62,8 @@ namespace HelloDesktopAssistant
         }
 
         private Window _window = new Window();
-        private int _currentId;
+        private List<int> _hookIds = new List<int>();
+        private object _hookIdsLocker = new object();
 
         public KeyboardHook()
         {
@@ -77,14 +80,35 @@ namespace HelloDesktopAssistant
         /// </summary>
         /// <param name="modifierHook">The modifiers that are associated with the hot key.</param>
         /// <param name="key">The key itself that is associated with the hot key.</param>
-        public void RegisterHotKey(ModifierHookKeys modifierHook, Keys key)
+        public void RegisterHotKey(ModifierHookKeys modifierHook, Keys key, int forId)
         {
-            // increment the counter.
-            _currentId = _currentId + 1;
+            lock (_hookIdsLocker)
+            {
+                if (_hookIds.Contains(forId))
+                {
+                    UnregisterHotKey(_window.Handle, forId);
+                }
 
-            // register the hot key.
-            if (!RegisterHotKey(_window.Handle, _currentId, (uint)modifierHook, (uint)key))
-                throw new InvalidOperationException("Couldn’t register the hot key.");
+                _hookIds.Add(forId);
+
+                // register the hot key.
+                if (!RegisterHotKey(_window.Handle, forId, (uint)modifierHook, (uint)key))
+                    throw new InvalidOperationException("Couldn’t register the hot key.");
+            }
+            
+        }
+
+        public void UnregisterHotKey(int id)
+        {
+            lock (_hookIdsLocker)
+            {
+                if (_hookIds.Contains(id))
+                {
+                    _hookIds.Remove(id);
+                    UnregisterHotKey(_window.Handle, id);
+                }
+
+            }
         }
 
         /// <summary>
@@ -92,20 +116,46 @@ namespace HelloDesktopAssistant
         /// </summary>
         public event EventHandler<KeyPressedEventArgs> KeyPressed;
 
+        
+
         #region IDisposable Members
 
         public void Dispose()
         {
             // unregister all the registered hot keys.
-            for (int i = _currentId; i > 0; i--)
+            foreach (int hookId in _hookIds)
             {
-                UnregisterHotKey(_window.Handle, i);
+                UnregisterHotKey(_window.Handle, hookId);
             }
-
             // dispose the inner native window.
             _window.Dispose();
         }
 
+        #endregion
+
+        #region Extensions
+        public static ModifierHookKeys ToSpecialKeys(string value)
+        {
+            var valParts = value.Split('+');
+            ModifierHookKeys toReturn;
+            Enum.TryParse(valParts.First(), true, out toReturn);
+            if (valParts.Length == 3) //two special + one ordinal
+            {
+                ModifierHookKeys tempModifier;
+                if (Enum.TryParse(valParts[1], true, out tempModifier))
+                {
+                    toReturn |= tempModifier;
+                }
+            }
+            return toReturn;
+        }
+
+        public static Keys ToOrdinalKeys(string value)
+        {
+            Keys toReturn;
+            Enum.TryParse(value.Split('+').Last(), true, out toReturn);
+            return toReturn;
+        } 
         #endregion
     }
 }

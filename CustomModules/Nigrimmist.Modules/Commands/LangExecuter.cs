@@ -14,7 +14,20 @@ namespace Nigrimmist.Modules.Commands
 {
     public class LangExecuter : IActionHandler
     {
-        public List<string> CallCommandList { get { return new List<string>() { "execute" }; } }
+        
+
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    
+                    new CallCommandInfo("execute" )
+                };
+            }
+        }
+
         public string CommandDescription { get { return "Выполняет код на C#. Добавьте help для вызова справки."; } }
 
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)

@@ -10,10 +10,18 @@ namespace Yushko.Commands
 {
     public class Horoscope : IActionHandler
     {
-        public List<string> CallCommandList {
-            get { return new List<string>() { "гороскоп", "horo"}; }
+        
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    
+                    new CallCommandInfo("гороскоп" )
+                };
+            }
         }
-
         public string CommandDescription { get { return @"гороскоп <знак зодиака>"; } }
 
         private IDictionary<string, string> Signs = new Dictionary<string, string>()

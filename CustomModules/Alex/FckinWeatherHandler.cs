@@ -18,7 +18,19 @@ namespace SmartAssHandlerLib
         private const string QueryTemaplate = "http://thefuckingweather.com/?where={0}";
         private const string FailedResult = "I CAN'T FIND THAT SHIT!";
 
-        public List<string> CallCommandList { get { return new List<string>() {"weather"}; }  }
+        
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    
+                    new CallCommandInfo("weather" )
+                };
+            }
+        }
+
         public string CommandDescription { get { return "Shows fucking WEATHER!"; } }
 
         public void HandleMessage(string command, string args, object clientData, Action<string, AnswerBehaviourType> sendMessageFunc)

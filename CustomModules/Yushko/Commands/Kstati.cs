@@ -9,10 +9,18 @@ namespace Yushko.Commands
 {
     public class Kstati : IActionHandler
     {
-        public List<string> CallCommandList {
-            get { return new List<string>() { "кстати"}; }
+        
+        public List<CallCommandInfo> CallCommandList
+        {
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    
+                    new CallCommandInfo("кстати" )
+                };
+            }
         }
-
         public string CommandDescription { get { return @"Интересный факт одной строкой"; } }
 
 

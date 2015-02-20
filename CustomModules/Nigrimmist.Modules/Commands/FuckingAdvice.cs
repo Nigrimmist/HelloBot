@@ -18,9 +18,16 @@ namespace Nigrimmist.Modules.Commands
     /// </summary>
     public class Advice : IActionHandler
     {
-        public List<string> CallCommandList
+        public List<CallCommandInfo> CallCommandList
         {
-            get { return new List<string>() { "дай совет", "advice" }; }
+            get
+            {
+                return new List<CallCommandInfo>()
+                {
+                    new CallCommandInfo("дай совет"),
+                    new CallCommandInfo("advice")
+                };
+            }
         }
         public string CommandDescription { get { return @"Случайный совет с http://fucking-great-advice.ru/"; } }
 
