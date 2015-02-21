@@ -176,7 +176,7 @@ namespace HelloBotCore
         {
             StringBuilder sb = new StringBuilder();
             
-            sb.Append(String.Join(Environment.NewLine, handlers.Select(x => String.Format("{0} - {1}", string.Join(" / ", x.CallCommandList.Select(y => botCommandPrefix + y)), x.CommandDescription)).ToList()));
+            sb.Append(String.Join(Environment.NewLine, handlers.Select(x => String.Format("{0} - {1}", string.Join(" / ", x.CallCommandList.Select(y => botCommandPrefix + y.Command)), x.CommandDescription)).ToList()));
             sb.AppendLine("");
             sb.AppendLine("Запили свой модуль : https://github.com/Nigrimmist/HelloBot");
 
