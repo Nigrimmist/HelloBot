@@ -12,7 +12,7 @@ namespace HelloBotCore
 {
     public class HelloBot
     {
-        private  List<IActionHandler> handlers = new List<IActionHandler>();
+        private List<IActionHandler> handlers = new List<IActionHandler>();
         private IDictionary<string, Tuple<string, Func<string>>> systemCommands;
         private string moduleDllmask { get; set; }
         private string botCommandPrefix;
@@ -67,18 +67,18 @@ namespace HelloBotCore
                     }
                 }
             }
-            
+
             return toReturn;
         }
 
-        public void HandleMessage(string incomingMessage, Action<string,AnswerBehaviourType> answerCallback, object data)
+        public void HandleMessage(string incomingMessage, Action<string, AnswerBehaviourType> answerCallback, object data)
         {
             if (incomingMessage.Contains(botCommandPrefix))
             {
                 var command = incomingMessage.Substring(incomingMessage.IndexOf(botCommandPrefix, StringComparison.InvariantCulture) + botCommandPrefix.Length);
                 if (!string.IsNullOrEmpty(command))
                 {
-                    
+
                     var systemCommandList = systemCommands.Where(x => x.Key.ToLower() == command.ToLower()).ToList();
                     if (systemCommandList.Any())
                     {
@@ -104,7 +104,10 @@ namespace HelloBotCore
                                 {
                                     try
                                     {
-                                        hnd.HandleMessage(command,args, data, answerCallback);
+                                        if (!args.Contains(command))
+                                            hnd.HandleMessage(command, args, data, answerCallback);
+                                        else
+                                            hnd.HandleMessage(command, args.Replace(botCommandPrefix, ""), data, answerCallback);
                                     }
                                     catch (Exception ex)
                                     {
@@ -112,7 +115,7 @@ namespace HelloBotCore
                                         {
                                             OnErrorOccured(ex);
                                         }
-                                        answerCallback(command + " сломан :(",AnswerBehaviourType.Text);
+                                        answerCallback(command + " сломан :(", AnswerBehaviourType.Text);
                                     }
                                 }
 
@@ -140,7 +143,7 @@ namespace HelloBotCore
                     {
                         var args = phrase.Substring(com.Command.Length);
                         if (string.IsNullOrEmpty(args) || args.StartsWith(" "))
-                        foundCommands.Add(com.Command);
+                            foundCommands.Add(com.Command);
                     }
                 }
             }
@@ -148,34 +151,34 @@ namespace HelloBotCore
             if (foundCommands.Any())
             {
                 string foundCommand = foundCommands.OrderByDescending(x => x).First();
-                toReturn = handlers.FirstOrDefault(x => x.CallCommandList.Select(y=>y.Command).Contains(foundCommand,StringComparer.OrdinalIgnoreCase));
+                toReturn = handlers.FirstOrDefault(x => x.CallCommandList.Select(y => y.Command).Contains(foundCommand, StringComparer.OrdinalIgnoreCase));
                 if (toReturn != null)
                 {
                     command = foundCommand;
                 }
             }
-            
+
             return toReturn;
         }
 
         private string GetSystemCommands()
         {
-            return String.Join(Environment.NewLine, systemCommands.Select(x => String.Format(botCommandPrefix+"{0} - {1}", x.Key, x.Value.Item1)).ToList());
+            return String.Join(Environment.NewLine, systemCommands.Select(x => String.Format(botCommandPrefix + "{0} - {1}", x.Key, x.Value.Item1)).ToList());
         }
 
         public List<string> GetUserDefinedCommandList()
         {
             List<string> toReturn = new List<string>();
-            foreach (var commandList in handlers.Select(x=>x.CallCommandList))
+            foreach (var commandList in handlers.Select(x => x.CallCommandList))
             {
-                toReturn.AddRange(commandList.Select(x=>x.Command));
+                toReturn.AddRange(commandList.Select(x => x.Command));
             }
             return toReturn;
         }
         private string GetUserDefinedCommands()
         {
             StringBuilder sb = new StringBuilder();
-            
+
             sb.Append(String.Join(Environment.NewLine, handlers.Select(x => String.Format("{0} - {1}", string.Join(" / ", x.CallCommandList.Select(y => botCommandPrefix + y.Command)), x.CommandDescription)).ToList()));
             sb.AppendLine("");
             sb.AppendLine("Запили свой модуль : https://github.com/Nigrimmist/HelloBot");
@@ -184,5 +187,5 @@ namespace HelloBotCore
         }
     }
 
-   
+
 }
